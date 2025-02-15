@@ -9,6 +9,8 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
+import type { PropsWithChildren } from 'react'
+import { cn } from './utils'
 
 export const links: Route.LinksFunction = () => [
   {
@@ -16,6 +18,20 @@ export const links: Route.LinksFunction = () => [
     href: '/favicon.svg',
   },
 ]
+
+function Block(props: PropsWithChildren<{ className?: string }>) {
+  const { children, className } = props
+  return (
+    <div
+      className={cn(
+        'relative before:absolute before:top-0 before:-left-[100vw] before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  )
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,7 +43,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <div className="isolate">
+          <div className="max-w-screen overflow-x-hidden">
+            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-2xl))_var(--gutter-width)] justify-center [--gutter-width:2.5rem]">
+              <div className="border-e border-gray-950/5"></div>
+              <div>
+                <Block className="h-16"></Block>
+                <Block className="flex items-center px-2">
+                  <span className="text-6xl">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 67.7 67.7"
+                    >
+                      <path fill="#233B6C" d="M8.5 8.5h50.8v50.8H8.5z" />
+                    </svg>
+                  </span>
+                  <h1 className="inline align-middle text-6xl/24 font-bold">
+                    少年读书隙中窥月
+                  </h1>
+                </Block>
+                <Block>{children}</Block>
+              </div>
+              <div className="border-s border-gray-950/5"></div>
+            </div>
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
