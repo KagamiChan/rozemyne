@@ -11,6 +11,7 @@ import type { Route } from './+types/root'
 import './app.css'
 import type { HTMLProps, PropsWithChildren } from 'react'
 import { cn } from './utils'
+import Logo from './assets/svg/logo.svg?react'
 
 export const links: Route.LinksFunction = () => [
   {
@@ -50,19 +51,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <div className="border-e border-gray-950/10 dark:border-white/5"></div>
               <div className="flex flex-col">
                 <div className="h-16"></div>
-                <Block className="flex items-center px-2">
-                  <span className="text-6xl">
-                    <svg
-                      xmlns="http://www.w3.org/500/svg"
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 67.7 67.7"
-                    >
-                      <path fill="#233B6C" d="M8.5 8.5h50.8v50.8H8.5z" />
-                    </svg>
-                  </span>
-                  <h1 className="inline align-middle text-6xl/24 font-bold">
-                    少年读书隙中窥月
+                <Block className="flex h-16 items-center px-2">
+                  <h1 className="flex items-center">
+                    <Logo className="text-rozemyne-900 h-12 w-auto" />
+                    <span className="sr-only">少年读书隙中窥月</span>
                   </h1>
                 </Block>
                 <Block className="grow">{children}</Block>
