@@ -26,7 +26,7 @@ export default function Post({ loaderData }: Route.ComponentProps) {
         </time>
       </div>
       <div
-        className="prose-lg px-2"
+        className="prose-lg px-2 pt-16"
         dangerouslySetInnerHTML={{ __html: loaderData.post.html }}
       />
     </article>

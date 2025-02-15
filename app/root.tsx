@@ -9,7 +9,7 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
-import type { PropsWithChildren } from 'react'
+import type { HTMLProps, PropsWithChildren } from 'react'
 import { cn } from './utils'
 
 export const links: Route.LinksFunction = () => [
@@ -19,10 +19,11 @@ export const links: Route.LinksFunction = () => [
   },
 ]
 
-function Block(props: PropsWithChildren<{ className?: string }>) {
-  const { children, className } = props
+function Block(props: PropsWithChildren<HTMLProps<HTMLDivElement>>) {
+  const { children, className, ...rest } = props
   return (
     <div
+      {...rest}
       className={cn(
         'relative before:absolute before:top-0 before:-left-[100vw] before:h-px before:w-[200vw] before:bg-gray-950/10 dark:before:bg-white/5',
         className,
@@ -45,9 +46,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
-            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-lg))_var(--gutter-width)] justify-center [--gutter-width:4rem]">
+            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center [--gutter-width:4rem]">
               <div className="border-e border-gray-950/10 dark:border-white/5"></div>
-              <div>
+              <div className="flex flex-col">
                 <div className="h-16"></div>
                 <Block className="flex items-center px-2">
                   <span className="text-6xl">
@@ -64,7 +65,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     少年读书隙中窥月
                   </h1>
                 </Block>
-                <Block>{children}</Block>
+                <Block className="grow">{children}</Block>
+                <Block
+                  role="footer"
+                  className="mt-16 flex min-h-16 items-center px-2"
+                >
+                  <p>2013-{new Date().getFullYear()} 鏡 / CC-BY-SA 4.0</p>
+                </Block>
               </div>
               <div className="border-s border-gray-950/10 dark:border-white/5"></div>
             </div>
