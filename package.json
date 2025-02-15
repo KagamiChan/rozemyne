@@ -10,6 +10,7 @@
     "typecheck": "react-router typegen && tsc -b"
   },
   "dependencies": {
+    "@ibm/plex-sans-sc": "^1.1.0",
     "@react-router/node": "^7.1.5",
     "@react-router/serve": "^7.1.5",
     "isbot": "^5.1.17",
@@ -37,5 +38,10 @@
     "vite-plugin-markdown": "^2.2.0",
     "vite-tsconfig-paths": "^5.1.4",
     "wrangler": "^3.87.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@ibm/plex-sans-sc": "patches/@ibm__plex-sans-sc.patch"
+    }
   }
 }

@@ -4,10 +4,18 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@ibm/plex-sans-sc':
+    hash: bea47afa715d21547fb0b380f14cb34280c49df9e6f8c9c618988b43892d6d87
+    path: patches/@ibm__plex-sans-sc.patch
+
 importers:
 
   .:
     dependencies:
+      '@ibm/plex-sans-sc':
+        specifier: ^1.1.0
+        version: 1.1.0(patch_hash=bea47afa715d21547fb0b380f14cb34280c49df9e6f8c9c618988b43892d6d87)
       '@react-router/node':
         specifier: ^7.1.5
         version: 7.1.5(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.3)
@@ -607,6 +615,13 @@ packages:
   '@humanwhocodes/retry@0.4.1':
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
+
+  '@ibm/plex-sans-sc@1.1.0':
+    resolution: {integrity: sha512-IkhORwgw/CrsUss7uW9Rj6KKSsGQoIyIaNWjjju/7sV7SYS3yk0c/DgZN/leIG3Co5lN/X4Or/sQaL+SdvmSIg==}
+
+  '@ibm/telemetry-js@1.9.1':
+    resolution: {integrity: sha512-qq8RPafUJHUQieXVCte1kbJEx6JctWzbA/YkXzopbfzIDRT2+hbR9QmgH+KH7bDDNRcDbdHWvHfwJKzThlMtPg==}
+    hasBin: true
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -3044,6 +3059,12 @@ snapshots:
   '@humanwhocodes/retry@0.3.1': {}
 
   '@humanwhocodes/retry@0.4.1': {}
+
+  '@ibm/plex-sans-sc@1.1.0(patch_hash=bea47afa715d21547fb0b380f14cb34280c49df9e6f8c9c618988b43892d6d87)':
+    dependencies:
+      '@ibm/telemetry-js': 1.9.1
+
+  '@ibm/telemetry-js@1.9.1': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
