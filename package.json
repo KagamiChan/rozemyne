@@ -48,5 +48,6 @@
     "patchedDependencies": {
       "@ibm/plex-sans-sc": "patches/@ibm__plex-sans-sc.patch"
     }
-  }
+  },
+  "packageManager": "pnpm@10.4.0"
 }
