@@ -45,7 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
-            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-lg))_var(--gutter-width)] justify-center [--gutter-width:2.5rem]">
+            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-lg))_var(--gutter-width)] justify-center [--gutter-width:4rem]">
               <div className="border-e border-gray-950/10 dark:border-white/5"></div>
               <div>
                 <div className="h-16"></div>
