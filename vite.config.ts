@@ -6,6 +6,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { plugin as markdown, Mode } from 'vite-plugin-markdown'
 import Shiki from '@shikijs/markdown-it'
 import MarkdownIt from 'markdown-it'
+import svgr from 'vite-plugin-svgr'
 
 const md = MarkdownIt()
 
@@ -39,5 +40,6 @@ export default defineConfig(({ isSsrBuild }) => ({
       mode: [Mode.TOC, Mode.HTML],
       markdownIt: md,
     }),
+    svgr(),
   ],
 }))

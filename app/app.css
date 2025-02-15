@@ -6,6 +6,18 @@
   --font-sans:
     'IBM Plex Sans SC', ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-rozemyne-50: #f1f7fd;
+  --color-rozemyne-100: #dfedfa;
+  --color-rozemyne-200: #c5e0f8;
+  --color-rozemyne-300: #9eccf2;
+  --color-rozemyne-400: #70afea;
+  --color-rozemyne-500: #4e91e3;
+  --color-rozemyne-600: #3976d7;
+  --color-rozemyne-700: #3061c5;
+  --color-rozemyne-800: #2d50a0;
+  --color-rozemyne-900: #233b6c;
+  --color-rozemyne-950: #1d2b4e;
 }
 
 html,

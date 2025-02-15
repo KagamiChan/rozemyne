@@ -24,7 +24,7 @@ function Block(props: PropsWithChildren<{ className?: string }>) {
   return (
     <div
       className={cn(
-        'relative before:absolute before:top-0 before:-left-[100vw] before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10',
+        'relative before:absolute before:top-0 before:-left-[100vw] before:h-px before:w-[200vw] before:bg-gray-950/10 dark:before:bg-white/5',
         className,
       )}
     >
@@ -45,14 +45,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
-            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-2xl))_var(--gutter-width)] justify-center [--gutter-width:2.5rem]">
-              <div className="border-e border-gray-950/5"></div>
+            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-lg))_var(--gutter-width)] justify-center [--gutter-width:2.5rem]">
+              <div className="border-e border-gray-950/10 dark:border-white/5"></div>
               <div>
-                <Block className="h-16"></Block>
+                <div className="h-16"></div>
                 <Block className="flex items-center px-2">
                   <span className="text-6xl">
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="http://www.w3.org/500/svg"
                       width="1em"
                       height="1em"
                       viewBox="0 0 67.7 67.7"
@@ -66,7 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </Block>
                 <Block>{children}</Block>
               </div>
-              <div className="border-s border-gray-950/5"></div>
+              <div className="border-s border-gray-950/10 dark:border-white/5"></div>
             </div>
           </div>
         </div>
