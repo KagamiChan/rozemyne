@@ -21,24 +21,25 @@ export function loader({}: Route.LoaderArgs) {
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <div className="flex flex-col">
-      <div className="h-16 border-b border-gray-950/10 dark:border-white/5"></div>
       {Object.keys(loaderData.posts).map((url) => (
-        <div
+        <NavLink
+          className="hover:bg-rozemyne-900 group flex h-16 w-full items-center justify-between border-b border-gray-950/10 px-2 text-xl transition-colors hover:text-white dark:border-white/5"
+          to={`/post/${fileName(url)}`}
           key={url}
-          className="flex h-16 w-full items-center justify-between border-b border-gray-950/10 px-2 text-xl dark:border-white/5"
         >
-          <NavLink
-            className="after:bg-rozemyne-500 relative after:absolute after:-bottom-2 after:-left-2 after:z-[-1] after:h-[calc(100%+1rem)] after:w-0 after:transition-all after:duration-500 hover:after:w-[calc(100%+1rem)]"
-            to={`/post/${fileName(url)}`}
-          >
+          <span>
             {loaderData.posts[url]?.attributes?.title ?? fileName(url)}
-          </NavLink>
-          <time className="self-start justify-self-end text-sm text-gray-500">
+          </span>
+
+          <time
+            dateTime={loaderData.posts[url]?.attributes?.date}
+            className="self-start justify-self-end text-sm text-gray-500 group-hover:text-white"
+          >
             {new Intl.DateTimeFormat('zh-Hans', {
               dateStyle: 'long',
             }).format(new Date(loaderData.posts[url]?.attributes?.date))}
           </time>
-        </div>
+        </NavLink>
       ))}
     </div>
   )
