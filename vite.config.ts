@@ -3,7 +3,20 @@ import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import { plugin as markdown } from 'vite-plugin-markdown'
+import { plugin as markdown, Mode } from 'vite-plugin-markdown'
+import Shiki from '@shikijs/markdown-it'
+import MarkdownIt from 'markdown-it'
+
+const md = MarkdownIt()
+
+md.use(
+  await Shiki({
+    themes: {
+      light: 'vitesse-light',
+      dark: 'vitesse-dark',
+    },
+  }),
+)
 
 export default defineConfig(({ isSsrBuild }) => ({
   build: {
@@ -22,6 +35,9 @@ export default defineConfig(({ isSsrBuild }) => ({
     tailwindcss(),
     reactRouter(),
     tsconfigPaths(),
-    markdown(),
+    markdown({
+      mode: [Mode.TOC, Mode.HTML],
+      markdownIt: md,
+    }),
   ],
 }))

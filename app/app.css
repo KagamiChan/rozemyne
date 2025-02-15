@@ -1,9 +1,11 @@
-@import "tailwindcss";
-@import "@ibm/plex-sans-sc/css/ibm-plex-sans-sc-default.css";
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@import '@ibm/plex-sans-sc/css/ibm-plex-sans-sc-default.css';
 
 @theme {
-  --font-sans: "IBM Plex Sans SC", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    'IBM Plex Sans SC', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 html,

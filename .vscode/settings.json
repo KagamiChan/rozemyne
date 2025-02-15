@@ -1,5 +1,13 @@
 {
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
+  "editor.tabSize": 2,
+  "files.eol": "\n"
 }
