@@ -17,9 +17,9 @@ export function loader({ context }: Route.LoaderArgs) {
 export default function Home({ loaderData }: Route.ComponentProps) {
   console.log(loaderData.articles)
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {Object.keys(loaderData.articles).map((url) => (
-        <NavLink key={url} to={`/post/${fileName(url)}`}>
+        <NavLink className="flex" key={url} to={`/post/${fileName(url)}`}>
           {fileName(url)}
         </NavLink>
       ))}
