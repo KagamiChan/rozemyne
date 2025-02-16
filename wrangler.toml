@@ -6,3 +6,7 @@ assets = { directory = "./build/client/" }
 
 [vars]
 VALUE_FROM_CLOUDFLARE = "Hello from Cloudflare"
+
+[[routes]]
+pattern = "preview.kagami.moe"
+custom_domain = true
