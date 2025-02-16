@@ -12,8 +12,8 @@ import './app.css'
 import type { HTMLProps, PropsWithChildren } from 'react'
 import { cn } from './utils'
 import Logo from './assets/svg/logo.svg?react'
-import ArrowLeft from '~/assets/svg/arrow-left.svg?react'
-import Update from '~/assets/svg/update.svg?react'
+import ArrowUpLeft from '~/assets/svg/arrow-up-left.svg?react'
+import LoaderCircle from '~/assets/svg/loader-circle.svg?react'
 import { NavLink } from './components/nav-link'
 
 export const links: Route.LinksFunction = () => [
@@ -66,8 +66,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   to="/"
                   className="group flex h-full w-16 items-center justify-center border-e border-gray-950/10 dark:border-white/5 [.active]:hidden"
                 >
-                  <ArrowLeft className="size-6 group-[.pending]:hidden" />
-                  <Update className="hidden size-6 animate-spin group-[.pending]:block" />
+                  <ArrowUpLeft className="size-6 group-[.pending]:hidden" />
+                  <LoaderCircle className="hidden size-6 animate-spin group-[.pending]:block" />
                 </NavLink>
               </div>
               <div className="border-s border-gray-950/10 dark:border-white/5"></div>

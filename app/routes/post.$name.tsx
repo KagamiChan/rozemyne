@@ -1,7 +1,5 @@
 import type { Post } from '~/types'
 import type { Route } from './+types/post.$name'
-import { NavLink } from 'react-router'
-import ArrowLeft from '~/assets/svg/arrow-left.svg?react'
 
 export async function loader({ params }: Route.LoaderArgs) {
   const post: Post = await import(`../contents/posts/${params.name}.md`)
@@ -11,9 +9,11 @@ export async function loader({ params }: Route.LoaderArgs) {
 export default function Post({ loaderData }: Route.ComponentProps) {
   return (
     <article>
-      <div className="relative flex h-16 w-full items-center justify-between border-b border-gray-950/10 dark:border-white/5">
-        <h1 className="px-2 text-4xl">{loaderData.post.attributes.title}</h1>
-        <time className="absolute top-0 right-2 text-sm text-gray-500">
+      <div className="relative flex w-full items-center justify-between border-b border-gray-950/10 dark:border-white/5">
+        <h1 className="px-2 text-4xl leading-relaxed">
+          {loaderData.post.attributes.title}
+        </h1>
+        <time className="absolute right-2 -bottom-6 text-sm text-gray-500">
           {new Intl.DateTimeFormat('zh-Hans', {
             dateStyle: 'long',
           }).format(new Date(loaderData.post.attributes?.date))}
