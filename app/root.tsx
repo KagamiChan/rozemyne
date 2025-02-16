@@ -2,7 +2,6 @@ import {
   isRouteErrorResponse,
   Links,
   Meta,
-  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -14,6 +13,9 @@ import type { HTMLProps, PropsWithChildren } from 'react'
 import { cn } from './utils'
 import Logo from './assets/svg/logo.svg?react'
 import ArrowLeft from '~/assets/svg/arrow-left.svg?react'
+import Update from '~/assets/svg/update.svg?react'
+import { NavLink } from './components/nav-link'
+
 export const links: Route.LinksFunction = () => [
   {
     rel: 'icon',
@@ -37,7 +39,7 @@ function Block(props: PropsWithChildren<HTMLProps<HTMLDivElement>>) {
 }
 
 const GRID = cn(
-  'grid grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center [--gutter-width:4rem]',
+  'grid grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center [--gutter-width:0.5rem] sm:[--gutter-width:4rem]',
 )
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -62,9 +64,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <div className="relative">
                 <NavLink
                   to="/"
-                  className="hover:bg-rozemyne-900 group flex h-full w-16 items-center justify-center border-e border-gray-950/10 transition-colors hover:text-white dark:border-white/5 [.active]:hidden"
+                  className="group flex h-full w-16 items-center justify-center border-e border-gray-950/10 dark:border-white/5 [.active]:hidden"
                 >
-                  <ArrowLeft className="size-6 group-[.pending]:animate-bounce" />
+                  <ArrowLeft className="size-6 group-[.pending]:hidden" />
+                  <Update className="hidden size-6 animate-spin group-[.pending]:block" />
                 </NavLink>
               </div>
               <div className="border-s border-gray-950/10 dark:border-white/5"></div>
