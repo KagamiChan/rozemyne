@@ -4,13 +4,6 @@ import type { Post } from '~/types'
 import LoaderCircle from '~/assets/svg/loader-circle.svg?react'
 import { NavLink } from '~/components/nav-link'
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'New React Router App' },
-    { name: 'description', content: 'Welcome to React Router!' },
-  ]
-}
-
 export function loader({}: Route.LoaderArgs) {
   const posts: Record<string, Post> = import.meta.glob(
     '../contents/posts/*.md',

@@ -7,6 +7,7 @@ import { plugin as markdown, Mode } from 'vite-plugin-markdown'
 import Shiki from '@shikijs/markdown-it'
 import MarkdownIt from 'markdown-it'
 import svgr from 'vite-plugin-svgr'
+import { execa } from 'execa'
 
 const md = MarkdownIt()
 
@@ -18,6 +19,9 @@ md.use(
     },
   }),
 )
+
+const commitHash = await execa('git', ['rev-parse', 'HEAD'])
+const now = new Date().toISOString()
 
 export default defineConfig(({ isSsrBuild }) => ({
   build: {
@@ -42,4 +46,8 @@ export default defineConfig(({ isSsrBuild }) => ({
     }),
     svgr(),
   ],
+  define: {
+    __BUILD_HASH__: JSON.stringify(commitHash.stdout),
+    __BUILD_TIME__: JSON.stringify(now),
+  },
 }))

@@ -9,12 +9,21 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
-import type { HTMLProps, PropsWithChildren } from 'react'
 import { cn } from './utils'
 import Logo from './assets/svg/logo.svg?react'
 import ArrowUpLeft from '~/assets/svg/arrow-up-left.svg?react'
 import LoaderCircle from '~/assets/svg/loader-circle.svg?react'
 import { NavLink } from './components/nav-link'
+import { Block } from './components/block'
+import Github from '~/assets/svg/github.svg?react'
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: '少年读书隙中窥月' },
+    { name: 'description', content: '镜的个人日志' },
+    { name: 'keywords', content: '镜, 少年读书隙中窥月, 日志, BLOG' },
+  ]
+}
 
 export const links: Route.LinksFunction = () => [
   {
@@ -22,21 +31,6 @@ export const links: Route.LinksFunction = () => [
     href: '/favicon.svg',
   },
 ]
-
-function Block(props: PropsWithChildren<HTMLProps<HTMLDivElement>>) {
-  const { children, className, ...rest } = props
-  return (
-    <div
-      {...rest}
-      className={cn(
-        'relative before:absolute before:top-0 before:-left-[100vw] before:h-px before:w-[200vw] before:bg-gray-950/10 dark:before:bg-white/5',
-        className,
-      )}
-    >
-      {children}
-    </div>
-  )
-}
 
 const GRID = cn(
   'grid grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center [--gutter-width:0.5rem] sm:[--gutter-width:4rem]',
@@ -85,9 +79,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <Block className="grow">{children}</Block>
                 <Block
                   role="footer"
-                  className="mt-16 flex min-h-16 items-center px-2"
+                  className="relative mt-16 flex min-h-16 items-center justify-between px-2"
                 >
                   <p>2013-{new Date().getFullYear()} 鏡 / CC-BY-SA 4.0</p>
+                  <a
+                    href="https://github.com/kagamichan"
+                    target="_blank"
+                    className="opacity-50 transition-opacity hover:opacity-100"
+                  >
+                    <Github className="size-4" />
+                  </a>
+                  <code
+                    className="text-rozemyne-900 absolute -top-5 right-2 text-xs"
+                    title={__BUILD_TIME__}
+                  >
+                    rozemyne {__BUILD_HASH__.slice(0, 8)}
+                  </code>
                 </Block>
               </div>
               <div className="border-s border-gray-950/10 dark:border-white/5"></div>
