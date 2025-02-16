@@ -13,7 +13,7 @@ export default function Post({ loaderData }: Route.ComponentProps) {
     <article>
       <div className="relative flex h-16 w-full items-center justify-between border-b border-gray-950/10 dark:border-white/5">
         <h1 className="px-2 text-4xl">{loaderData.post.attributes.title}</h1>
-        <time className="self-start justify-self-end text-sm text-gray-500">
+        <time className="absolute top-0 right-2 text-sm text-gray-500">
           {new Intl.DateTimeFormat('zh-Hans', {
             dateStyle: 'long',
           }).format(new Date(loaderData.post.attributes?.date))}

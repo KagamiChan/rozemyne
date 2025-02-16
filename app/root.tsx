@@ -36,9 +36,13 @@ function Block(props: PropsWithChildren<HTMLProps<HTMLDivElement>>) {
   )
 }
 
+const GRID = cn(
+  'grid grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center [--gutter-width:4rem]',
+)
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="zh-Hans" className="overflow-y-scroll">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,7 +52,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
-            <div className="fixed top-0 z-10 grid h-16 w-full grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center bg-white/50 backdrop-blur-sm [--gutter-width:4rem] before:absolute before:bottom-0 before:-left-[100vw] before:h-px before:w-[200vw] before:bg-gray-950/10 dark:before:bg-white/5">
+            <Block
+              className={cn(
+                GRID,
+                'fixed top-0 z-10 h-16 w-full bg-white/50 backdrop-blur-sm before:top-auto before:bottom-0',
+              )}
+            >
               <div className="border-e border-gray-950/10 dark:border-white/5"></div>
               <div className="relative">
                 <NavLink
@@ -59,10 +68,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </NavLink>
               </div>
               <div className="border-s border-gray-950/10 dark:border-white/5"></div>
-            </div>
-            <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center [--gutter-width:4rem]">
+            </Block>
+            <div className={cn(GRID, 'min-h-dvh')}>
               <div className="border-e border-gray-950/10 dark:border-white/5"></div>
-              <div className="relative">
+              <div className="relative flex flex-col">
                 <div className="h-16"></div>
                 <Block className="flex h-16 items-center px-2 before:hidden">
                   <h1 className="flex items-center">
