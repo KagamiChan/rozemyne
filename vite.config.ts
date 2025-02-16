@@ -8,6 +8,7 @@ import Shiki from '@shikijs/markdown-it'
 import MarkdownIt from 'markdown-it'
 import svgr from 'vite-plugin-svgr'
 import { execa } from 'execa'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 const md = MarkdownIt()
 
@@ -45,6 +46,26 @@ export default defineConfig(({ isSsrBuild }) => ({
       markdownIt: md,
     }),
     svgr(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'node_modules/@ibm/plex-sans-sc/fonts/split/woff2/hinted/*.*',
+          dest: 'fonts/ibm/plex-sans-sc',
+        },
+        {
+          src: 'node_modules/@fontsource/ibm-plex-mono/**/*.css',
+          dest: 'fonts/ibm/plex-mono',
+        },
+        {
+          src: 'node_modules/@fontsource/ibm-plex-mono/**/*.woff2',
+          dest: 'fonts/ibm/plex-mono/files',
+        },
+        {
+          src: 'node_modules/@fontsource/ibm-plex-mono/**/*.woff',
+          dest: 'fonts/ibm/plex-mono/files',
+        },
+      ],
+    }),
   ],
   define: {
     __BUILD_HASH__: JSON.stringify(commitHash.stdout),

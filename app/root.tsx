@@ -30,6 +30,14 @@ export const links: Route.LinksFunction = () => [
     rel: 'icon',
     href: '/favicon.svg',
   },
+  {
+    rel: 'stylesheet',
+    href: '/fonts/ibm/plex-sans-sc/IBMPlexSansSC-Regular.css',
+  },
+  {
+    rel: 'stylesheet',
+    href: '/fonts/ibm/plex-mono/400.css',
+  },
 ]
 
 const GRID = cn(
