@@ -20,17 +20,22 @@ export function loader({}: Route.LoaderArgs) {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
+  const posts = Object.entries(loaderData.posts).sort((a, b) => {
+    return (
+      new Date(b[1].attributes.date).getTime() -
+      new Date(a[1].attributes.date).getTime()
+    )
+  })
+
   return (
     <div className="flex flex-col">
-      {Object.keys(loaderData.posts).map((url) => (
+      {posts.map(([url, data]) => (
         <NavLink
           className="hover:bg-rozemyne-900 group relative flex h-16 w-full items-center gap-2 border-b border-gray-950/10 px-2 text-xl transition-colors hover:text-white dark:border-white/5"
           to={`/post/${fileName(url)}`}
           key={url}
         >
-          <span>
-            {loaderData.posts[url]?.attributes?.title ?? fileName(url)}
-          </span>
+          <span>{data?.attributes?.title ?? fileName(url)}</span>
 
           <Update className="hidden size-4 animate-spin group-[.pending]:block" />
 
@@ -40,7 +45,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           >
             {new Intl.DateTimeFormat('zh-Hans', {
               dateStyle: 'long',
-            }).format(new Date(loaderData.posts[url]?.attributes?.date))}
+            }).format(new Date(data?.attributes?.date))}
           </time>
         </NavLink>
       ))}
