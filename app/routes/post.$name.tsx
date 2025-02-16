@@ -19,7 +19,7 @@ export default function Post({ loaderData }: Route.ComponentProps) {
   return (
     <article>
       <div className="relative flex w-full items-center justify-between py-16">
-        <h1 className="px-2 text-2xl leading-16 font-semibold">
+        <h1 className="px-2 text-2xl leading-16 font-semibold text-balance">
           {loaderData.post.attributes.title}
         </h1>
         <time className="absolute right-2 bottom-0 text-sm text-gray-500">
@@ -29,7 +29,7 @@ export default function Post({ loaderData }: Route.ComponentProps) {
         </time>
       </div>
       <Block
-        className="prose-lg px-2 pt-16"
+        className="prose px-2 pt-16 text-pretty"
         dangerouslySetInnerHTML={{ __html: loaderData.post.html }}
       />
     </article>

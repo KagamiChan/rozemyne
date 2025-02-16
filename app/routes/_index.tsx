@@ -26,7 +26,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     <div className="flex flex-col">
       {posts.map(([url, data]) => (
         <NavLink
-          className="relative flex w-full items-center gap-2 border-b border-gray-950/10 px-2 text-xl leading-16 transition-colors dark:border-white/5"
+          className="relative flex w-full items-center gap-2 border-b border-gray-950/10 px-2 text-xl leading-16 text-balance transition-colors dark:border-white/5"
           to={`/post/${fileName(url)}`}
           key={url}
         >
