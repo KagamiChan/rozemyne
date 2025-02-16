@@ -2,6 +2,7 @@ import {
   isRouteErrorResponse,
   Links,
   Meta,
+  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -12,7 +13,7 @@ import './app.css'
 import type { HTMLProps, PropsWithChildren } from 'react'
 import { cn } from './utils'
 import Logo from './assets/svg/logo.svg?react'
-
+import ArrowLeft from '~/assets/svg/arrow-left.svg?react'
 export const links: Route.LinksFunction = () => [
   {
     rel: 'icon',
@@ -47,11 +48,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
+            <div className="fixed top-0 z-10 grid h-16 w-full grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center bg-white/50 backdrop-blur-sm [--gutter-width:4rem] before:absolute before:bottom-0 before:-left-[100vw] before:h-px before:w-[200vw] before:bg-gray-950/10 dark:before:bg-white/5">
+              <div className="border-e border-gray-950/10 dark:border-white/5"></div>
+              <div className="relative">
+                <NavLink
+                  to="/"
+                  className="hover:bg-rozemyne-900 group flex h-full w-16 items-center justify-center border-e border-gray-950/10 transition-colors hover:text-white dark:border-white/5 [.active]:hidden"
+                >
+                  <ArrowLeft className="size-6 group-[.pending]:animate-bounce" />
+                </NavLink>
+              </div>
+              <div className="border-s border-gray-950/10 dark:border-white/5"></div>
+            </div>
             <div className="grid min-h-dvh grid-cols-[var(--gutter-width)_minmax(0,var(--breakpoint-sm))_var(--gutter-width)] justify-center [--gutter-width:4rem]">
               <div className="border-e border-gray-950/10 dark:border-white/5"></div>
-              <div className="flex flex-col">
+              <div className="relative">
                 <div className="h-16"></div>
-                <Block className="flex h-16 items-center px-2">
+                <Block className="flex h-16 items-center px-2 before:hidden">
                   <h1 className="flex items-center">
                     <Logo className="text-rozemyne-900 h-12 w-auto" />
                     <span className="sr-only">少年读书隙中窥月</span>
