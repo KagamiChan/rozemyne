@@ -7,7 +7,9 @@
     "deploy": "wrangler deploy",
     "dev": "react-router dev",
     "start": "wrangler dev",
-    "typecheck": "react-router typegen && tsc -b"
+    "typecheck": "react-router typegen && tsc -b",
+    "lint": "eslint",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.2",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241112.0",
+    "@eslint/compat": "^1.2.7",
     "@playwright/test": "^1.50.1",
     "@react-router/dev": "^7.1.5",
     "@shikijs/markdown-it": "^2.3.2",
