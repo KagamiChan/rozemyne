@@ -8,7 +8,7 @@ import Shiki from '@shikijs/markdown-it'
 import MarkdownIt from 'markdown-it'
 import svgr from 'vite-plugin-svgr'
 import { execa } from 'execa'
-import { viteStaticCopy } from '@skagami/vite-plugin-static-copy'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 const md = MarkdownIt()
 
