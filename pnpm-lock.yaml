@@ -34,7 +34,7 @@ importers:
         version: 5.1.23
       motion:
         specifier: ^12.4.3
-        version: 12.4.10(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 12.4.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -1842,8 +1842,8 @@ packages:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
     engines: {node: '>= 0.6'}
 
-  framer-motion@12.4.10:
-    resolution: {integrity: sha512-3Msuyjcr1Pb5hjkn4EJcRe1HumaveP0Gbv4DBMKTPKcV/1GSMkQXj+Uqgneys+9DPcZM18Hac9qY9iUEF5LZtg==}
+  framer-motion@12.4.11:
+    resolution: {integrity: sha512-MHeZlgzo9DnQ6+TFgRqJiOk4vWwsDcXFtxeXlVawVs1nwgcZW3966foGIgkIiIrBSPHB9RlbqspAxiYWosFT9g==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -2307,14 +2307,14 @@ packages:
     resolution: {integrity: sha512-AbegBVI4sh6El+1gNwvD5YIck7nSA36weD7xvIxG4in80j/UoK8AEGaWnnz8v1GxonMCltmlNs5ZKbGvl9b1XQ==}
     engines: {node: '>= 0.8.0'}
 
-  motion-dom@12.4.10:
-    resolution: {integrity: sha512-ISP5u6FTceoD6qKdLupIPU/LyXBrxGox+P2e3mBbm1+pLdlBbwv01YENJr7+1WZnW5ucVKzFScYsV1eXTCG4Xg==}
+  motion-dom@12.4.11:
+    resolution: {integrity: sha512-wstlyV3pktgFjqsjbXMo1NX9hQD9XTVqxQNvfc+FREAgxr3GVzgWIEKvbyyNlki3J1jmmh+et9X3aCKeqFPcxA==}
 
   motion-utils@12.4.10:
     resolution: {integrity: sha512-NPwZd94V013SwRf++jMrk2+HEBgPkeIE2RiOzhAuuQlqxMJPkKt/LXVh6Upl+iN8oarSGD2dlY5/bqgsYXDABA==}
 
-  motion@12.4.10:
-    resolution: {integrity: sha512-AM21Lyfn7ZHO+nBuHJEA2REFgS3kUM83CLZnzM0ZY1/sVeKGkCtV4LF4O/YsQXyZ9mrUrrnTaUkKquS4eaIYjg==}
+  motion@12.4.11:
+    resolution: {integrity: sha512-dC2XjT/KdhWyHFxgEJSxzctH7yDUL1Fz8VI7c59vLuvo3mKWIUyldms89+9cddoKUHf+p61tYEvDKTvypOydpg==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0 || ^19.0.0
@@ -3111,6 +3111,7 @@ packages:
   wrangler@3.114.0:
     resolution: {integrity: sha512-cY0HxgU5yuc24tE1Y4KD2n9UzYYEx+9lSL7p/Sqj18SgDfwyiMPY/FryXQAPYLuD/S+dxArRQyeEkFSokIr75Q==}
     engines: {node: '>=16.17.0'}
+    deprecated: Deployments with nodejs_compat are broken. Please downgrade to 3.112.0
     hasBin: true
     peerDependencies:
       '@cloudflare/workers-types': ^4.20250224.0
@@ -4836,9 +4837,9 @@ snapshots:
 
   forwarded@0.2.0: {}
 
-  framer-motion@12.4.10(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  framer-motion@12.4.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      motion-dom: 12.4.10
+      motion-dom: 12.4.11
       motion-utils: 12.4.10
       tslib: 2.8.1
     optionalDependencies:
@@ -5278,15 +5279,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  motion-dom@12.4.10:
+  motion-dom@12.4.11:
     dependencies:
       motion-utils: 12.4.10
 
   motion-utils@12.4.10: {}
 
-  motion@12.4.10(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  motion@12.4.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      framer-motion: 12.4.10(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      framer-motion: 12.4.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       tslib: 2.8.1
     optionalDependencies:
       react: 19.0.0
