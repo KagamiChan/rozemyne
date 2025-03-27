@@ -10,3 +10,7 @@ VALUE_FROM_CLOUDFLARE = "Hello from Cloudflare"
 [[routes]]
 pattern = "kagami.moe"
 custom_domain = true
+
+[[routes]]
+pattern = "www.kagami.moe"
+custom_domain = true
