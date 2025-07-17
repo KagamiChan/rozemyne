@@ -4,7 +4,11 @@ import { Block } from '~/components/block'
 
 export function meta({ data }: Route.MetaArgs) {
   return [
-    { title: `${data.post.attributes.title} - 少年读书隙中窥月` },
+    {
+      title: data?.post.attributes.title
+        ? `${data.post.attributes.title} - 少年读书隙中窥月`
+        : '少年读书隙中窥月',
+    },
     { name: 'description', content: '镜的个人日志' },
     { name: 'keywords', content: '镜, 少年读书隙中窥月, 日志, BLOG' },
   ]
