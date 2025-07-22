@@ -46,7 +46,7 @@ importers:
         version: 7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       resolve-accept-language:
         specifier: ^3.1.10
-        version: 3.1.11
+        version: 3.1.12
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.3.1
@@ -2703,8 +2703,8 @@ packages:
   regex@6.0.1:
     resolution: {integrity: sha512-uorlqlzAKjKQZ5P+kTJr3eeJGSVroLKoHmquUj4zHWuR+hEyNqlXsSKlYYF5F4NI6nl7tWCs0apKJ0lmfsXAPA==}
 
-  resolve-accept-language@3.1.11:
-    resolution: {integrity: sha512-7YVsTu6c9i/8nm8JUwIa/YGmSf02lhaPQAa+G3baisj/v09/8gEJIF1aRO0bqVy/dQugYJJfqeyxrGBepg/RcQ==}
+  resolve-accept-language@3.1.12:
+    resolution: {integrity: sha512-ZzqMB26SGERN8/DS77HOTbC8nL6/JK8btqt1DMkeFwv3wjp16vXkKS3fwqTCePqc/XE3lg2kQ54h3FzqLpm8ww==}
     engines: {node: '>=4.0.0'}
 
   resolve-from@4.0.0:
@@ -5646,7 +5646,7 @@ snapshots:
     dependencies:
       regex-utilities: 2.3.0
 
-  resolve-accept-language@3.1.11: {}
+  resolve-accept-language@3.1.12: {}
 
   resolve-from@4.0.0: {}
 
