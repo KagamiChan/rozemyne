@@ -13,7 +13,7 @@ importers:
         version: 2.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@fontsource/ibm-plex-mono':
         specifier: ^5.1.1
-        version: 5.2.6
+        version: 5.2.7
       '@ibm/plex-sans-sc':
         specifier: ^1.1.0
         version: 1.1.0
@@ -710,8 +710,8 @@ packages:
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
-  '@fontsource/ibm-plex-mono@5.2.6':
-    resolution: {integrity: sha512-LTZJNTcpoT19fmwERZNMDI+ljHueuyhF2Qn+bICJ4Y4hxBLAAoJ2MRsGnyp0QNutW6t/25eyZpvaUK1LDrCo7Q==}
+  '@fontsource/ibm-plex-mono@5.2.7':
+    resolution: {integrity: sha512-MKAb8qV+CaiMQn2B0dIi1OV3565NYzp3WN5b4oT6LTkk+F0jR6j0ZN+5BKJiIhffDC3rtBULsYZE65+0018z9w==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -3789,7 +3789,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@fontsource/ibm-plex-mono@5.2.6': {}
+  '@fontsource/ibm-plex-mono@5.2.7': {}
 
   '@humanfs/core@0.19.1': {}
 
