@@ -59,26 +59,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <Block
               className={cn(
                 GRID,
-                'fixed top-0 z-10 h-16 w-full bg-white/50 backdrop-blur-sm before:top-auto before:bottom-0',
+                'fixed top-0 z-10 h-16 w-full bg-white/50 backdrop-blur-sm',
               )}
             >
-              <div className="border-e border-gray-950/10 dark:border-white/5"></div>
+              <div></div>
               <div className="relative">
                 <NavLink
                   to="/"
-                  className="group flex h-full w-16 items-center justify-center border-e border-gray-950/10 dark:border-white/5 [.active]:hidden"
+                  className="group flex h-full w-16 items-center justify-center [.active]:hidden"
                 >
                   <ArrowUpLeft className="size-6 group-[.pending]:hidden" />
                   <LoaderCircle className="hidden size-6 animate-spin group-[.pending]:block" />
                 </NavLink>
               </div>
-              <div className="border-s border-gray-950/10 dark:border-white/5"></div>
+              <div></div>
             </Block>
             <div className={cn(GRID, 'min-h-dvh')}>
-              <div className="border-e border-gray-950/10 dark:border-white/5"></div>
+              <div></div>
               <div className="relative flex flex-col">
                 <div className="h-16"></div>
-                <Block className="flex h-16 items-center px-2 before:hidden">
+                <Block className="flex h-16 items-center px-2">
                   <h1 className="flex items-center">
                     <Logo className="text-rozemyne-900 h-12 w-auto" />
                     <span className="sr-only">少年读书隙中窥月</span>
@@ -105,7 +105,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   </code>
                 </Block>
               </div>
-              <div className="border-s border-gray-950/10 dark:border-white/5"></div>
+              <div></div>
             </div>
           </div>
         </div>
