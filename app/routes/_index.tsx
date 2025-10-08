@@ -1,11 +1,11 @@
 import type { Route } from './+types/_index'
 import { fileName } from '~/utils'
-import type { Post } from '~/types'
+import type { MarkdownDocument } from '~/types'
 import LoaderCircle from '~/assets/svg/loader-circle.svg?react'
 import { NavLink } from '~/components/nav-link'
 
 export function loader({}: Route.LoaderArgs) {
-  const posts: Record<string, Post> = import.meta.glob(
+  const posts: Record<string, MarkdownDocument> = import.meta.glob(
     '../contents/posts/*.md',
     { eager: true },
   )
