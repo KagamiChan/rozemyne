@@ -26,7 +26,7 @@ export default function About({ loaderData }: Route.ComponentProps) {
         </h1>
       </div>
       <Block
-        className="prose px-2 pt-16 text-pretty"
+        className="prose w-full max-w-none px-2 pt-16 text-pretty"
         dangerouslySetInnerHTML={{ __html: loaderData.content.html }}
       />
     </article>
