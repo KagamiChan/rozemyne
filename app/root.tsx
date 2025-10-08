@@ -67,13 +67,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <span className="sr-only">少年读书隙中窥月</span>
                 </h1>
                 <div className="flex grow items-center justify-end gap-4">
-                  <NavLink to="/" className="[.active]:hidden">
-                    首页
+                  <NavLink to="/" className="p-1 [.active]:hidden">
+                    回首页
                   </NavLink>
-                  <a>关于我</a>
+                  <NavLink to="/about" className="p-1">
+                    关于我
+                  </NavLink>
                   <NavLink
                     to="https://marshmallow-qa.com/op2q74schrlhn0w"
                     target="_blank"
+                    className="p-1"
                   >
                     留言
                   </NavLink>

@@ -2,11 +2,11 @@ import type { Post } from '~/types'
 import type { Route } from './+types/post.$name'
 import { Block } from '~/components/block'
 
-export function meta({ data }: Route.MetaArgs) {
+export function meta({ loaderData }: Route.MetaArgs) {
   return [
     {
-      title: data?.post.attributes.title
-        ? `${data.post.attributes.title} - 少年读书隙中窥月`
+      title: loaderData?.post.attributes.title
+        ? `${loaderData.post.attributes.title} - 少年读书隙中窥月`
         : '少年读书隙中窥月',
     },
     { name: 'description', content: '镜的个人日志' },

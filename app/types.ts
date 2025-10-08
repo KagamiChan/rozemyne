@@ -7,3 +7,7 @@ export interface Post {
   toc: { level: string; content: string }[]
   html: string
 }
+
+export interface MarkdownDocument {
+  html: string
+}
