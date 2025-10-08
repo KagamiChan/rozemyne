@@ -65,7 +65,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <NavLink to="/" className="p-1 [.active]:hidden">
                     回首页
                   </NavLink>
-                  <NavLink to="/about" className="p-1">
+                  <NavLink to="/about" className="p-1 [.active]:hidden">
                     关于我
                   </NavLink>
                   <NavLink
