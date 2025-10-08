@@ -1,4 +1,4 @@
-import type { Post } from '~/types'
+import type { MarkdownDocument } from '~/types'
 import type { Route } from './+types/post.$name'
 import { Block } from '~/components/block'
 
@@ -15,7 +15,9 @@ export function meta({ loaderData }: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const post: Post = await import(`../contents/posts/${params.name}.md`)
+  const post: MarkdownDocument = await import(
+    `../contents/posts/${params.name}.md`
+  )
   return { post }
 }
 

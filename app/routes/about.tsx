@@ -20,6 +20,11 @@ export async function loader() {
 export default function About({ loaderData }: Route.ComponentProps) {
   return (
     <article>
+      <div className="relative flex w-full items-center justify-between py-16">
+        <h1 className="px-2 text-2xl leading-16 font-semibold text-balance">
+          {loaderData.content.attributes.title}
+        </h1>
+      </div>
       <Block
         className="prose px-2 pt-16 text-pretty"
         dangerouslySetInnerHTML={{ __html: loaderData.content.html }}
