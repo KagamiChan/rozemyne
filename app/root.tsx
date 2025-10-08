@@ -11,11 +11,9 @@ import type { Route } from './+types/root'
 import './app.css'
 import { cn } from './utils'
 import Logo from './assets/svg/logo.svg?react'
-import ArrowUpLeft from '~/assets/svg/arrow-up-left.svg?react'
-import LoaderCircle from '~/assets/svg/loader-circle.svg?react'
-import { NavLink } from './components/nav-link'
 import { Block } from './components/block'
 import Github from '~/assets/svg/github.svg?react'
+import { NavLink } from './components/nav-link'
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -56,33 +54,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
-            <Block
-              className={cn(
-                GRID,
-                'fixed top-0 z-10 h-16 w-full backdrop-blur-sm',
-              )}
-            >
-              <div></div>
-              <div className="relative">
-                <NavLink
-                  to="/"
-                  className="group flex h-full w-16 items-center justify-center [.active]:hidden"
-                >
-                  <ArrowUpLeft className="size-6 group-[.pending]:hidden" />
-                  <LoaderCircle className="hidden size-6 animate-spin group-[.pending]:block" />
-                </NavLink>
-              </div>
-              <div></div>
-            </Block>
             <div className={cn(GRID, 'min-h-dvh')}>
               <div></div>
               <div className="relative flex flex-col">
-                <div className="h-16"></div>
-                <Block className="flex h-16 items-center px-2">
+                <Block className="sticky top-0 flex h-16 items-center gap-4 px-2 backdrop-blur-sm">
                   <h1 className="flex items-center">
                     <Logo className="text-rozemyne-900 h-12 w-auto" />
                     <span className="sr-only">少年读书隙中窥月</span>
                   </h1>
+                  <div className="flex grow items-center justify-end gap-4">
+                    <NavLink to="/" className="[.active]:hidden">
+                      首页
+                    </NavLink>
+                    <a>关于我</a>
+                    <NavLink
+                      to="https://marshmallow-qa.com/op2q74schrlhn0w"
+                      target="_blank"
+                    >
+                      留言
+                    </NavLink>
+                  </div>
                 </Block>
                 <Block className="grow">{children}</Block>
                 <Block
