@@ -54,27 +54,37 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
+            <Block
+              className={cn(
+                GRID,
+                'fixed top-0 z-10 h-16 w-full backdrop-blur-sm',
+              )}
+            >
+              <div aria-hidden></div>
+              <Block className="sticky top-0 flex h-16 items-center gap-4 px-2 backdrop-blur-sm">
+                <h1 className="flex items-center">
+                  <Logo className="text-rozemyne-900 h-12 w-auto" />
+                  <span className="sr-only">少年读书隙中窥月</span>
+                </h1>
+                <div className="flex grow items-center justify-end gap-4">
+                  <NavLink to="/" className="[.active]:hidden">
+                    首页
+                  </NavLink>
+                  <a>关于我</a>
+                  <NavLink
+                    to="https://marshmallow-qa.com/op2q74schrlhn0w"
+                    target="_blank"
+                  >
+                    留言
+                  </NavLink>
+                </div>
+              </Block>
+              <div aria-hidden></div>
+            </Block>
             <div className={cn(GRID, 'min-h-dvh')}>
-              <div></div>
+              <div aria-hidden></div>
               <div className="relative flex flex-col">
-                <Block className="sticky top-0 flex h-16 items-center gap-4 px-2 backdrop-blur-sm">
-                  <h1 className="flex items-center">
-                    <Logo className="text-rozemyne-900 h-12 w-auto" />
-                    <span className="sr-only">少年读书隙中窥月</span>
-                  </h1>
-                  <div className="flex grow items-center justify-end gap-4">
-                    <NavLink to="/" className="[.active]:hidden">
-                      首页
-                    </NavLink>
-                    <a>关于我</a>
-                    <NavLink
-                      to="https://marshmallow-qa.com/op2q74schrlhn0w"
-                      target="_blank"
-                    >
-                      留言
-                    </NavLink>
-                  </div>
-                </Block>
+                <div className="h-16"></div>
                 <Block className="grow">{children}</Block>
                 <Block
                   role="footer"
@@ -96,7 +106,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   </code>
                 </Block>
               </div>
-              <div></div>
+              <div aria-hidden></div>
             </div>
           </div>
         </div>
