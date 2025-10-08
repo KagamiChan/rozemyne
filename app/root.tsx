@@ -15,6 +15,9 @@ import { Block } from './components/block'
 import Github from '~/assets/svg/github.svg?react'
 import { NavLink } from './components/nav-link'
 
+import './assets/fonts/LXGWWenKai-Regular.ttf?subsets'
+import '@fontsource/maple-mono'
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: '少年读书隙中窥月' },
@@ -27,14 +30,6 @@ export const links: Route.LinksFunction = () => [
   {
     rel: 'icon',
     href: '/favicon.svg',
-  },
-  {
-    rel: 'stylesheet',
-    href: '/fonts/lxgw-wenkai/index.css',
-  },
-  {
-    rel: 'stylesheet',
-    href: '/fonts/maple-mono/index.css',
   },
 ]
 

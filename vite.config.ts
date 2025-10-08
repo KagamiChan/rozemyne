@@ -9,6 +9,7 @@ import MarkdownIt from 'markdown-it'
 import svgr from 'vite-plugin-svgr'
 import { execa } from 'execa'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
+import font from 'vite-plugin-font'
 
 const md = MarkdownIt()
 
@@ -46,33 +47,8 @@ export default defineConfig(({ isSsrBuild }) => ({
       markdownIt: md,
     }),
     svgr(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: 'node_modules/@fontsource/lxgw-wenkai/**/*.css',
-          dest: 'fonts/lxgw-wenkai',
-        },
-        {
-          src: 'node_modules/@fontsource/lxgw-wenkai/**/*.woff2',
-          dest: 'fonts/lxgw-wenkai/files',
-        },
-        {
-          src: 'node_modules/@fontsource/lxgw-wenkai/**/*.woff',
-          dest: 'fonts/lxgw-wenkai/files',
-        },
-        {
-          src: 'node_modules/@fontsource/maple-mono/**/*.css',
-          dest: 'fonts/maple-mono',
-        },
-        {
-          src: 'node_modules/@fontsource/maple-mono/**/*.woff2',
-          dest: 'fonts/maple-mono/files',
-        },
-        {
-          src: 'node_modules/@fontsource/maple-mono/**/*.woff',
-          dest: 'fonts/maple-mono/files',
-        },
-      ],
+    font.vite({
+      scanFiles: ['app/**/*.{ts,tsx,js,jsx,md}'],
     }),
   ],
   define: {
