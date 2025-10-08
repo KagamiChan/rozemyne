@@ -13,8 +13,6 @@
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.2",
-    "@fontsource/ibm-plex-mono": "^5.1.1",
-    "@ibm/plex-sans-sc": "^1.1.0",
     "@react-router/fs-routes": "^7.7.0",
     "@react-router/node": "^7.7.0",
     "@react-router/serve": "^7.7.0",
@@ -30,6 +28,8 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241112.0",
     "@eslint/compat": "^1.2.7",
+    "@fontsource/lxgw-wenkai": "^5.2.5",
+    "@fontsource/maple-mono": "^5.2.5",
     "@playwright/test": "^1.50.1",
     "@react-router/dev": "^7.7.0",
     "@shikijs/markdown-it": "^3.0.0",

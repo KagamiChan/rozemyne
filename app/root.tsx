@@ -32,11 +32,11 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: 'stylesheet',
-    href: '/fonts/ibm/plex-sans-sc/IBMPlexSansSC-Regular.css',
+    href: '/fonts/lxgw-wenkai/index.css',
   },
   {
     rel: 'stylesheet',
-    href: '/fonts/ibm/plex-mono/400.css',
+    href: '/fonts/maple-mono/index.css',
   },
 ]
 
@@ -59,7 +59,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <Block
               className={cn(
                 GRID,
-                'fixed top-0 z-10 h-16 w-full bg-white/50 backdrop-blur-sm',
+                'fixed top-0 z-10 h-16 w-full backdrop-blur-sm',
               )}
             >
               <div></div>

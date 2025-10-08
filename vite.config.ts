@@ -49,20 +49,28 @@ export default defineConfig(({ isSsrBuild }) => ({
     viteStaticCopy({
       targets: [
         {
-          src: 'node_modules/@ibm/plex-sans-sc/fonts/split/woff2/hinted/*.*',
-          dest: 'fonts/ibm/plex-sans-sc',
+          src: 'node_modules/@fontsource/lxgw-wenkai/**/*.css',
+          dest: 'fonts/lxgw-wenkai',
         },
         {
-          src: 'node_modules/@fontsource/ibm-plex-mono/**/*.css',
-          dest: 'fonts/ibm/plex-mono',
+          src: 'node_modules/@fontsource/lxgw-wenkai/**/*.woff2',
+          dest: 'fonts/lxgw-wenkai/files',
         },
         {
-          src: 'node_modules/@fontsource/ibm-plex-mono/**/*.woff2',
-          dest: 'fonts/ibm/plex-mono/files',
+          src: 'node_modules/@fontsource/lxgw-wenkai/**/*.woff',
+          dest: 'fonts/lxgw-wenkai/files',
         },
         {
-          src: 'node_modules/@fontsource/ibm-plex-mono/**/*.woff',
-          dest: 'fonts/ibm/plex-mono/files',
+          src: 'node_modules/@fontsource/maple-mono/**/*.css',
+          dest: 'fonts/maple-mono',
+        },
+        {
+          src: 'node_modules/@fontsource/maple-mono/**/*.woff2',
+          dest: 'fonts/maple-mono/files',
+        },
+        {
+          src: 'node_modules/@fontsource/maple-mono/**/*.woff',
+          dest: 'fonts/maple-mono/files',
         },
       ],
     }),
