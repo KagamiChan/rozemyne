@@ -28,6 +28,8 @@ body {
   font-size: 20px;
   @apply bg-gray-100 dark:bg-gray-950;
 
+  text-autospace: normal;
+
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }

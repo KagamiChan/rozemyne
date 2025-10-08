@@ -35,7 +35,7 @@ export default function Post({ loaderData }: Route.ComponentProps) {
         </time>
       </div>
       <Block
-        className="prose px-2 pt-16 text-pretty"
+        className="prose w-full max-w-none px-2 pt-16 text-pretty"
         dangerouslySetInnerHTML={{ __html: loaderData.post.html }}
       />
     </article>
