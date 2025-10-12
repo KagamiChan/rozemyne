@@ -1,8 +1,10 @@
-import type { Route } from './+types/_index'
-import { fileName } from '~/utils'
 import type { MarkdownDocument } from '~/types'
+
 import LoaderCircle from '~/assets/svg/loader-circle.svg?react'
 import { NavLink } from '~/components/nav-link'
+import { fileName } from '~/utils'
+
+import type { Route } from './+types/_index'
 
 export function loader({}: Route.LoaderArgs) {
   const posts: Record<string, MarkdownDocument> = import.meta.glob(

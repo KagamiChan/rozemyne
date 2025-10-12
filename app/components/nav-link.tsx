@@ -1,5 +1,7 @@
 import type { ComponentProps } from 'react'
+
 import { NavLink as RouterNavLink } from 'react-router'
+
 import { cn } from '~/utils'
 
 export function NavLink(props: ComponentProps<typeof RouterNavLink>) {

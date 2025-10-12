@@ -1,6 +1,8 @@
 import type { MarkdownDocument } from '~/types'
-import type { Route } from './+types/about'
+
 import { Block } from '~/components/block'
+
+import type { Route } from './+types/about'
 
 export function meta() {
   return [

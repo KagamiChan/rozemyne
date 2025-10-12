@@ -1,6 +1,8 @@
 import type { MarkdownDocument } from '~/types'
-import type { Route } from './+types/post.$name'
+
 import { Block } from '~/components/block'
+
+import type { Route } from './+types/post.$name'
 
 export function meta({ loaderData }: Route.MetaArgs) {
   return [

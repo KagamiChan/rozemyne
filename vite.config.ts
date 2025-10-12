@@ -1,15 +1,14 @@
 import { reactRouter } from '@react-router/dev/vite'
 import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
-import tailwindcss from '@tailwindcss/vite'
-import { defineConfig } from 'vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import { plugin as markdown, Mode } from 'vite-plugin-markdown'
 import Shiki from '@shikijs/markdown-it'
-import MarkdownIt from 'markdown-it'
-import svgr from 'vite-plugin-svgr'
+import tailwindcss from '@tailwindcss/vite'
 import { execa } from 'execa'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import MarkdownIt from 'markdown-it'
+import { defineConfig } from 'vite'
 import font from 'vite-plugin-font'
+import { plugin as markdown, Mode } from 'vite-plugin-markdown'
+import svgr from 'vite-plugin-svgr'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 const md = MarkdownIt()
 

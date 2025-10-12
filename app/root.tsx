@@ -7,14 +7,16 @@ import {
   ScrollRestoration,
 } from 'react-router'
 
-import type { Route } from './+types/root'
-import './app.css'
-import { cn } from './utils'
-import Logo from './assets/svg/logo.svg?react'
-import { Block } from './components/block'
 import Github from '~/assets/svg/github.svg?react'
-import { NavLink } from './components/nav-link'
+import Logo from '~/assets/svg/logo.svg?react'
 
+import './app.css'
+
+import type { Route } from './+types/root'
+
+import { Block } from './components/block'
+import { NavLink } from './components/nav-link'
+import { cn } from './utils'
 import './assets/fonts/LXGWWenKai-Regular.ttf?subsets'
 import '@fontsource/maple-mono'
 
