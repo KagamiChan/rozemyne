@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241112.0",
-    "@eslint/compat": "^1.2.7",
+    "@eslint/compat": "^2.0.0",
     "@fontsource/lxgw-wenkai": "^5.2.5",
     "@fontsource/maple-mono": "^5.2.5",
     "@playwright/test": "^1.50.1",
