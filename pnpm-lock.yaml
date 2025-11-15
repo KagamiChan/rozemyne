@@ -40,7 +40,7 @@ importers:
         version: 7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       resolve-accept-language:
         specifier: ^3.1.10
-        version: 3.1.13
+        version: 3.1.14
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.4.0
@@ -3022,8 +3022,8 @@ packages:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
 
-  resolve-accept-language@3.1.13:
-    resolution: {integrity: sha512-QSONOVvnQFXAoWNp735ArO3N5/R2TEWBkXNLFGn51OCbljrYCCuYCyf7RvowN168mndQgw/6StI+lwZSinbYag==}
+  resolve-accept-language@3.1.14:
+    resolution: {integrity: sha512-7c5/Pb3j1IPfbW/aTf+yDXDqQnA8MApUMPwEdx+qKz0aAaiA3VsTKvZmpzBjleWWpn4JfNSOwTraJ4UxMdR6mQ==}
     engines: {node: '>=4.0.0'}
 
   resolve-from@4.0.0:
@@ -6316,7 +6316,7 @@ snapshots:
 
   regexp-tree@0.1.27: {}
 
-  resolve-accept-language@3.1.13: {}
+  resolve-accept-language@3.1.14: {}
 
   resolve-from@4.0.0: {}
 
