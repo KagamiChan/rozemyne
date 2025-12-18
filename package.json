@@ -57,7 +57,7 @@
     "vite-plugin-markdown": "^2.2.0",
     "vite-plugin-static-copy": "^3.0.0",
     "vite-plugin-svgr": "^4.3.0",
-    "vite-tsconfig-paths": "^5.1.4",
+    "vite-tsconfig-paths": "^6.0.0",
     "wrangler": "^4.0.0"
   },
   "packageManager": "pnpm@10.26.0"
