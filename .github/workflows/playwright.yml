@@ -22,6 +22,8 @@ jobs:
         run: corepack pnpm exec playwright install --with-deps
       - name: Run Playwright tests
         run: corepack pnpm exec playwright test
+      - name: Run production Playwright tests
+        run: corepack pnpm test:e2e:production
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:

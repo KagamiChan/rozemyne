@@ -9,7 +9,8 @@
     "start": "wrangler dev",
     "typecheck": "react-router typegen && tsc -b",
     "lint": "eslint",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:e2e:production": "playwright test --config=playwright.production.config.ts"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.2",

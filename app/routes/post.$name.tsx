@@ -20,6 +20,11 @@ export async function loader({ params }: Route.LoaderArgs) {
   const post: MarkdownDocument = await import(
     `../contents/posts/${params.name}.md`
   )
+
+  if (import.meta.env.PROD && post.attributes.draft) {
+    throw new Response('Not Found', { status: 404 })
+  }
+
   return { post }
 }
 
