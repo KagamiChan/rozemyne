@@ -123,17 +123,25 @@ Posts live in `app/contents/posts/` and are imported eagerly by the index
 route. A post filename becomes its URL slug, so renaming a file changes its
 public URL.
 
+Post filenames must use `YYYY-MM-DD-<slug>.md`, based on the original
+publication date. Keep the slug descriptive and free of personal identifiers.
+
 Post frontmatter must provide values compatible with `MarkdownDocument`:
 
 ```yaml
 ---
 title: Post title
 date: 2026-01-01T00:00:00.000Z
+revised: 2026-02-01T00:00:00.000Z
 draft: false
 ---
 ```
 
-- Use an ISO 8601 date that JavaScript can parse reliably.
+- `date` is the original publication time and must not be replaced when a post
+  is migrated, redacted, rewritten, or republished.
+- Add optional `revised` when the post changes after publication. Use the
+  latest edit time, not a replacement publication time.
+- Use ISO 8601 timestamps that JavaScript can parse reliably.
 - Draft posts remain viewable in development for authoring. In production they
   must be omitted from the index and return 404 when requested directly.
 - Markdown is rendered to HTML at build time with syntax highlighting.
@@ -142,6 +150,38 @@ draft: false
   `dangerouslySetInnerHTML`.
 - The about page currently requires only a `title`, even though it shares the
   Markdown module type at the import boundary.
+
+## Content privacy
+
+- Read and apply `CONTENT_PRIVACY.md` before adding, migrating, or publishing
+  content.
+- Public publication is binary: **Publish** or **Reject**. Sensitivity bands
+  S0-S4 are private review metadata, not public audience levels.
+- Apply non-exclusive facet and subject tags. Hard prohibitions, private
+  third-party protection, credible AI inference, and marginal corpus risk take
+  precedence over residual judgment.
+- Content review is default deny. Do not copy a legacy post into this
+  repository until its final text, metadata, links, and assets pass the full
+  decision pipeline.
+- Redaction must be minimal and localized. Preserve the original argument,
+  structure, voice, style, chronology, and emphasis. Use `[redacted]` for a
+  small removed span when an explicit omission is clearer than deletion.
+- Limit redaction to three spans in one section and at most 10% or 200
+  characters of the body, whichever is smaller. Do not remove prose
+  paragraphs.
+- Never replace a post with newly authored prose. Reject it when privacy
+  requires paragraph-level rewriting, changes across multiple sections, or
+  edits that change what the author said or how the author sounded.
+- Treat historical and obsolete personal details as sensitive, and evaluate
+  combinations of otherwise ordinary facts for social-engineering risk.
+- Anonymize non-public third parties. Retain deliberately public facts only
+  when they are necessary and minimally specific.
+- Preserve original voice and accept stylometric linkage as a documented
+  residual risk; never rewrite style for anonymity.
+- Keep the review ledger private and outside the repository. Never record
+  sensitive excerpts in it.
+- `draft: true` and application-level 404 behavior are not privacy boundaries;
+  repository contents and Git history may still be public.
 
 ## Cloudflare and build behavior
 

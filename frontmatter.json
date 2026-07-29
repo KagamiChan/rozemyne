@@ -24,6 +24,11 @@
           "isPublishDate": true
         },
         {
+          "title": "Last revised date",
+          "name": "revised",
+          "type": "datetime"
+        },
+        {
           "title": "Content preview",
           "name": "preview",
           "type": "image"
