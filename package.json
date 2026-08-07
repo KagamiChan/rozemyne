@@ -22,7 +22,7 @@
     "motion": "^13.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.7.0",
+    "react-router": "^8.0.0",
     "resolve-accept-language": "^3.1.10",
     "tailwind-merge": "^3.0.1"
   },
