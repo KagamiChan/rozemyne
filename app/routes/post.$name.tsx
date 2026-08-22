@@ -1,6 +1,5 @@
-import type { MarkdownDocument } from '~/types'
-
 import { Block } from '~/components/block'
+import type { MarkdownDocument } from '~/types'
 
 import type { Route } from './+types/post.$name'
 
@@ -17,9 +16,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const post: MarkdownDocument = await import(
-    `../contents/posts/${params.name}.md`
-  )
+  const post: MarkdownDocument = await import(`../contents/posts/${params.name}.md`)
 
   if (import.meta.env.PROD && post.attributes.draft) {
     throw new Response('Not Found', { status: 404 })

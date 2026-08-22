@@ -1,11 +1,4 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from 'react-router'
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 
 import Github from '~/assets/svg/github.svg?react'
 import Logo from '~/assets/svg/logo.svg?react'
@@ -13,14 +6,13 @@ import Logo from '~/assets/svg/logo.svg?react'
 import './app.css'
 
 import type { Route } from './+types/root'
-
 import { Block } from './components/block'
 import { NavLink } from './components/nav-link'
 import { cn } from './utils'
 import './assets/fonts/LXGWWenKai-Regular.ttf?subsets'
 import '@fontsource/maple-mono'
 
-export function meta({}: Route.MetaArgs) {
+export function meta(_: Route.MetaArgs) {
   return [
     { title: '少年读书隙中窥月' },
     { name: 'description', content: '镜的个人日志' },
@@ -51,16 +43,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="isolate">
           <div className="max-w-screen overflow-x-hidden">
-            <Block
-              className={cn(
-                GRID,
-                'fixed top-0 z-10 h-16 w-full backdrop-blur-sm',
-              )}
-            >
+            <Block className={cn(GRID, 'fixed top-0 z-10 h-16 w-full backdrop-blur-sm')}>
               <div aria-hidden></div>
               <Block className="sticky top-0 flex h-16 items-center gap-4 px-2 backdrop-blur-sm">
                 <h1 className="flex items-center">
-                  <Logo className="text-rozemyne-900 h-12 w-auto" />
+                  <Logo className="h-12 w-auto text-rozemyne-900" />
                   <span className="sr-only">少年读书隙中窥月</span>
                 </h1>
                 <div className="flex grow items-center justify-end gap-4">
@@ -99,7 +86,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     <Github className="size-4" />
                   </a>
                   <code
-                    className="text-rozemyne-900 absolute -top-5 right-2 text-xs"
+                    className="absolute -top-5 right-2 text-xs text-rozemyne-900"
                     title={__BUILD_TIME__}
                   >
                     rozemyne {__BUILD_HASH__.slice(0, 8)}
@@ -129,9 +116,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   if (isRouteErrorResponse(error)) {
     message = error.status === 404 ? '404' : 'Error'
     details =
-      error.status === 404
-        ? 'The requested page could not be found.'
-        : error.statusText || details
+      error.status === 404 ? 'The requested page could not be found.' : error.statusText || details
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message
     stack = error.stack

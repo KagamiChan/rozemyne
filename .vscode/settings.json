@@ -5,9 +5,9 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-  },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "oxc.fmt.disableNestedConfig": true,
   "editor.tabSize": 2,
   "files.eol": "\n"
 }
