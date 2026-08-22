@@ -23,7 +23,31 @@ md.use(
 const commitHash = await execa('git', ['rev-parse', 'HEAD'])
 const now = new Date().toISOString()
 
+// Linux filesystems cap file names at 255 bytes; post slugs can be long
+// non-ASCII strings, so truncate the readable part and rely on the hash.
+const maxChunkNameBytes = 48
+
+function shortChunkName(name: string | undefined | null) {
+  if (!name) return 'chunk'
+  let truncated = ''
+  let bytes = 0
+  for (const char of name) {
+    const size = (char.codePointAt(0) ?? 0) > 0x7f ? 3 : 1
+    if (bytes + size > maxChunkNameBytes) break
+    bytes += size
+    truncated += char
+  }
+  return truncated || 'chunk'
+}
+
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        chunkFileNames: (chunk) => `assets/${shortChunkName(chunk.name)}-[hash].js`,
+      },
+    },
+  },
   plugins: [
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     reactRouter(),
