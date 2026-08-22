@@ -3,12 +3,12 @@
 
 @theme {
   --font-sans:
-    'LXGW WenKai', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    'LXGW WenKai', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 
   --font-mono:
-    'Maple Mono', ui-monospace, monospace, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    'Maple Mono', ui-monospace, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
 
   --color-rozemyne-50: #f1f7fd;
   --color-rozemyne-100: #dfedfa;

@@ -1,16 +1,14 @@
-import type { MarkdownDocument } from '~/types'
-
 import LoaderCircle from '~/assets/svg/loader-circle.svg?react'
 import { NavLink } from '~/components/nav-link'
+import type { MarkdownDocument } from '~/types'
 import { fileName } from '~/utils'
 
 import type { Route } from './+types/_index'
 
-export function loader({}: Route.LoaderArgs) {
-  const posts: Record<string, MarkdownDocument> = import.meta.glob(
-    '../contents/posts/*.md',
-    { eager: true },
-  )
+export function loader(_: Route.LoaderArgs) {
+  const posts: Record<string, MarkdownDocument> = import.meta.glob('../contents/posts/*.md', {
+    eager: true,
+  })
   return { posts }
 }
 
@@ -18,10 +16,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const posts = Object.entries(loaderData.posts)
     .filter(([_, post]) => !post.attributes.draft || import.meta.env.DEV)
     .sort((a, b) => {
-      return (
-        new Date(b[1].attributes.date).getTime() -
-        new Date(a[1].attributes.date).getTime()
-      )
+      return new Date(b[1].attributes.date).getTime() - new Date(a[1].attributes.date).getTime()
     })
 
   return (

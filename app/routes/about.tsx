@@ -1,6 +1,5 @@
-import type { MarkdownDocument } from '~/types'
-
 import { Block } from '~/components/block'
+import type { MarkdownDocument } from '~/types'
 
 import type { Route } from './+types/about'
 

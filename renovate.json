@@ -2,7 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":automergeAll"
+    ":automergeAll",
+    "schedule:monthly",
+    "schedule:automergeMonthly"
   ],
-  "ignoreDeps": ["eslint", "@types/eslint"]
+  "timezone": "Asia/Shanghai"
 }

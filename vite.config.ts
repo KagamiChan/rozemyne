@@ -1,14 +1,13 @@
+import { cloudflare } from '@cloudflare/vite-plugin'
 import { reactRouter } from '@react-router/dev/vite'
-import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
 import Shiki from '@shikijs/markdown-it'
 import tailwindcss from '@tailwindcss/vite'
 import { execa } from 'execa'
 import MarkdownIt from 'markdown-it'
-import { defineConfig } from 'vite'
 import font from 'vite-plugin-font'
 import { plugin as markdown, Mode } from 'vite-plugin-markdown'
 import svgr from 'vite-plugin-svgr'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { defineConfig } from 'vite-plus'
 
 const md = MarkdownIt()
 
@@ -24,23 +23,11 @@ md.use(
 const commitHash = await execa('git', ['rev-parse', 'HEAD'])
 const now = new Date().toISOString()
 
-export default defineConfig(({ isSsrBuild }) => ({
-  build: {
-    rollupOptions: isSsrBuild
-      ? {
-          input: './workers/app.ts',
-        }
-      : undefined,
-  },
+export default defineConfig({
   plugins: [
-    cloudflareDevProxy({
-      getLoadContext({ context }) {
-        return { cloudflare: context.cloudflare }
-      },
-    }),
-    tailwindcss(),
+    cloudflare({ viteEnvironment: { name: 'ssr' } }),
     reactRouter(),
-    tsconfigPaths(),
+    tailwindcss(),
     markdown({
       mode: [Mode.TOC, Mode.HTML],
       markdownIt: md,
@@ -50,8 +37,26 @@ export default defineConfig(({ isSsrBuild }) => ({
       scanFiles: ['app/**/*.{ts,tsx,js,jsx,md}'],
     }),
   ],
+  resolve: {
+    tsconfigPaths: true,
+  },
+  lint: {
+    ignorePatterns: ['build/**', '.react-router/**', 'playwright-report/**', 'test-results/**'],
+  },
+  fmt: {
+    ignorePatterns: ['app/contents/**'],
+    semi: false,
+    singleQuote: true,
+    trailingComma: 'all',
+    endOfLine: 'lf',
+    sortImports: {},
+    sortTailwindcss: {
+      stylesheet: './app/app.css',
+      functions: ['cn', 'clsx'],
+    },
+  },
   define: {
     __BUILD_HASH__: JSON.stringify(commitHash.stdout),
     __BUILD_TIME__: JSON.stringify(now),
   },
-}))
+})

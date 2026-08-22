@@ -45,6 +45,7 @@ changes update it.
 ```sh
 corepack pnpm dev
 corepack pnpm lint
+corepack pnpm fmt
 corepack pnpm typecheck
 corepack pnpm build
 corepack pnpm test:e2e
@@ -74,8 +75,8 @@ Run the relevant Playwright tests for user-visible behavior.
 
 - Use ESM imports and `import type` for type-only imports.
 - Prefer the `~/*` alias for imports from `app/`.
-- Follow the existing import grouping and ordering; ESLint enforces sorted
-  imports and rejects unused imports.
+- Follow the existing import grouping and ordering; `vp lint` (Oxlint)
+  rejects unused imports, and Oxfmt enforces import ordering.
 - Use generated route types from each route's `./+types/...` module for loader,
   metadata, component, and error-boundary signatures.
 - Keep data loading in route `loader` functions and return serializable data.
@@ -88,13 +89,19 @@ Run the relevant Playwright tests for user-visible behavior.
 
 ## Formatting and styling
 
-Prettier is configured for:
+Formatting and linting run through the Vite+ toolchain (`vp lint`, `vp fmt`),
+configured in the `lint` and `fmt` blocks of `vite.config.ts`. Oxfmt is
+configured for:
 
 - no semicolons
 - single quotes
 - trailing commas
 - LF line endings
-- Tailwind class sorting, including classes passed to `cn`
+- import sorting
+- Tailwind class sorting, including classes passed to `cn` and `clsx`
+
+Markdown posts in `app/contents/` are excluded from formatting; do not
+reformat historical post content.
 
 Use Tailwind utility classes for component styling. Keep global rules and
 design tokens in `app/app.css`. Reuse the existing `rozemyne` color scale and
@@ -185,9 +192,15 @@ draft: false
 
 ## Cloudflare and build behavior
 
-- `workers/app.ts` is the SSR entry point for Cloudflare Workers.
-- Keep Cloudflare bindings typed through `CloudflareEnvironment` and
-  `AppLoadContext`.
+- `workers/app.ts` is the SSR entry point for Cloudflare Workers. In dev and
+  build it runs through `@cloudflare/vite-plugin`; `wrangler.toml` points
+  `main` at this source file.
+- Loader/action context is provided through the React Router context API
+  (`cloudflareContext` in `app/cloudflare-context.ts`, set in
+  `workers/app.ts`).
+- Keep Cloudflare bindings typed through `CloudflareEnvironment`.
+- The Vite+ toolchain aliases `vite` to `@voidzero-dev/vite-plus-core` via
+  the `overrides` in `pnpm-workspace.yaml`; keep that alias when upgrading.
 - `vite.config.ts` embeds the current Git commit hash and build timestamp.
   Build commands therefore require the repository to have a resolvable
   `HEAD`.

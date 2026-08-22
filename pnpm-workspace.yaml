@@ -1,6 +1,11 @@
+overrides:
+  vite: npm:@voidzero-dev/vite-plus-core@latest
+
 ignoredBuiltDependencies:
   - koffi
   - protobufjs
 
 onlyBuiltDependencies:
   - cn-font-split
+  - esbuild
+  - workerd
