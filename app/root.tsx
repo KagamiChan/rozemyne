@@ -86,7 +86,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     <Github className="size-4" />
                   </a>
                   <code
-                    className="absolute -top-5 right-2 text-xs text-rozemyne-900"
+                    className="absolute -top-5 right-2 text-xs text-rozemyne-900 dark:text-rozemyne-300"
                     title={__BUILD_TIME__}
                   >
                     rozemyne {__BUILD_HASH__.slice(0, 8)}
