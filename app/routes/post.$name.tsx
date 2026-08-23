@@ -28,18 +28,21 @@ export async function loader({ params }: Route.LoaderArgs) {
 export default function Post({ loaderData }: Route.ComponentProps) {
   return (
     <article>
-      <div className="relative flex w-full items-center justify-between py-16">
-        <h1 className="px-2 text-2xl leading-16 font-semibold text-balance">
+      <div className="px-2 pt-10 pb-6">
+        <h1 className="text-2xl leading-10 font-semibold text-balance">
           {loaderData.post.attributes.title}
         </h1>
-        <time className="absolute right-2 bottom-0 text-sm text-gray-500">
+        <time
+          className="mt-3 block text-sm text-gray-500"
+          dateTime={loaderData.post.attributes?.date}
+        >
           {new Intl.DateTimeFormat('zh-Hans', {
             dateStyle: 'long',
           }).format(new Date(loaderData.post.attributes?.date))}
         </time>
       </div>
       <Block
-        className="prose w-full max-w-none px-2 pt-16 text-pretty"
+        className="prose w-full max-w-none px-2 text-pretty dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: loaderData.post.html }}
       />
     </article>

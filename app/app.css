@@ -34,3 +34,16 @@ body {
     color-scheme: dark;
   }
 }
+
+/* Apply Shiki's dual-theme variables under the dark color scheme. */
+@media (prefers-color-scheme: dark) {
+  .shiki,
+  .shiki span {
+    background-color: var(--shiki-dark-bg) !important;
+    color: var(--shiki-dark) !important;
+  }
+}
+
+.prose :where(h1, h2, h3, h4) {
+  scroll-margin-top: 5rem;
+}
