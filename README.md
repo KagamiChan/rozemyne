@@ -88,6 +88,10 @@ is committed. The native engine is pinned to `7.6.8` via
 resolves an empty release version from its `latest` endpoint; the patch also
 makes the Linux installer fail loudly instead of silently succeeding.
 
+Font preparation is build/dev-only work: it is wrapped in Vite+'s `lazyPlugins`
+and `./scripts/fonts` is imported dynamically, so `vp lint` and `vp fmt` — which
+resolve the config only to read their own blocks — never run the native splitter.
+
 `public/giscus.css` is the custom Giscus theme. It `@import`s `/fonts.css` and
 uses the same families (`LXGW WenKai` for body, `Maple Mono` for code) at the
 site's 20px base, and restyles the widget to match the article rather than

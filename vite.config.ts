@@ -11,9 +11,7 @@ import type { Plugin } from 'vite'
 import { plugin as markdown, Mode } from 'vite-plugin-markdown'
 import { viteStaticCopy, type Target } from 'vite-plugin-static-copy'
 import svgr from 'vite-plugin-svgr'
-import { defineConfig } from 'vite-plus'
-
-import { prepareFont } from './scripts/fonts'
+import { defineConfig, lazyPlugins } from 'vite-plus'
 
 const require = createRequire(import.meta.url)
 
@@ -30,29 +28,6 @@ md.use(
 
 const commitHash = await execa('git', ['rev-parse', 'HEAD'])
 const now = new Date().toISOString()
-
-// Full-glyph LXGW WenKai split (cache key covers source, splitter version, and
-// options). Copies land under /fonts so the stylesheet also works cross-origin
-// from the Giscus theme iframe.
-const fonts = await prepareFont(process.cwd())
-const fontCacheDir = path.relative(process.cwd(), fonts.directory).replace(/\\/g, '/')
-const mapleMonoWoff2 = path
-  .relative(
-    process.cwd(),
-    require.resolve('@fontsource/maple-mono/files/maple-mono-latin-400-normal.woff2'),
-  )
-  .replace(/\\/g, '/')
-
-console.log(
-  `rozemyne fonts | ${fonts.cached ? 'cached' : 'generated'} ${fonts.key} | ` +
-    `${fonts.subsets.length} woff2 | ${(fonts.bytes / 1024 / 1024).toFixed(2)} MiB`,
-)
-
-const fontCopyTargets: Target[] = [
-  { src: `${fontCacheDir}/*.woff2`, dest: 'fonts/lxgw-wenkai', rename: { stripBase: true } },
-  { src: `${fontCacheDir}/result.css`, dest: 'fonts/lxgw-wenkai', rename: { stripBase: true } },
-  { src: mapleMonoWoff2, dest: 'fonts', rename: { stripBase: true } },
-]
 
 // CORS is scoped to the webfont endpoints and the Giscus theme only;
 // production uses public/_headers.
@@ -116,8 +91,38 @@ export default defineConfig({
       markdownIt: md,
     }),
     svgr(),
-    ...viteStaticCopy({ targets: fontCopyTargets }),
-    fontsCors(),
+    // Full-glyph LXGW WenKai split and the static-copy targets are prepared only
+    // for dev/build. `lazyPlugins` skips this factory while Vite+ resolves the
+    // config just to read the lint/fmt blocks, and the dynamic imports keep
+    // cn-font-split's native FFI out of `vp lint`/`vp fmt` entirely.
+    lazyPlugins(async () => {
+      const { prepareFont } = await import('./scripts/fonts')
+      const fonts = await prepareFont(process.cwd())
+      const fontCacheDir = path.relative(process.cwd(), fonts.directory).replace(/\\/g, '/')
+      const mapleMonoWoff2 = path
+        .relative(
+          process.cwd(),
+          require.resolve('@fontsource/maple-mono/files/maple-mono-latin-400-normal.woff2'),
+        )
+        .replace(/\\/g, '/')
+
+      console.log(
+        `rozemyne fonts | ${fonts.cached ? 'cached' : 'generated'} ${fonts.key} | ` +
+          `${fonts.subsets.length} woff2 | ${(fonts.bytes / 1024 / 1024).toFixed(2)} MiB`,
+      )
+
+      const fontCopyTargets: Target[] = [
+        { src: `${fontCacheDir}/*.woff2`, dest: 'fonts/lxgw-wenkai', rename: { stripBase: true } },
+        {
+          src: `${fontCacheDir}/result.css`,
+          dest: 'fonts/lxgw-wenkai',
+          rename: { stripBase: true },
+        },
+        { src: mapleMonoWoff2, dest: 'fonts', rename: { stripBase: true } },
+      ]
+
+      return [...viteStaticCopy({ targets: fontCopyTargets }), fontsCors()]
+    }),
   ],
   resolve: {
     tsconfigPaths: true,

@@ -3,8 +3,6 @@ import fs from 'node:fs'
 import { createRequire } from 'node:module'
 import path from 'node:path'
 
-import { fontSplit } from 'cn-font-split'
-
 const require = createRequire(import.meta.url)
 
 /** Source font kept in the repository; never modified or regenerated. */
@@ -90,6 +88,9 @@ export async function prepareFont(root: string): Promise<PreparedFont> {
 
   await fs.promises.rm(directory, { recursive: true, force: true })
   await fs.promises.mkdir(directory, { recursive: true })
+  // Import the native splitter only on a cache miss, so config loads that never
+  // split fonts (lint/fmt, cached builds) don't initialize the native FFI.
+  const { fontSplit } = await import('cn-font-split')
   await fontSplit({ ...splitOptions, input: sourcePath, outDir: directory })
   await fs.promises.writeFile(ready, key)
 
