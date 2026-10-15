@@ -59,15 +59,23 @@ function collect(directory: string, key: string, cached: boolean): PreparedFont 
 
 /**
  * Prepares the split LXGW WenKai webfonts, reusing the cached output whenever
- * the source contents, splitter version, and options are unchanged.
+ * the source contents, splitter version, native engine version, and options are
+ * unchanged.
  */
 export async function prepareFont(root: string): Promise<PreparedFont> {
   const sourcePath = path.resolve(root, FONT_SOURCE)
   const source = await fs.promises.readFile(sourcePath)
+  const splitterPackagePath = require.resolve('cn-font-split/package.json')
   const splitterVersion = (require('cn-font-split/package.json') as { version: string }).version
+  // The native binary (dist/version, e.g. "x86_64-unknown-linux-gnu@7.6.8") does
+  // the actual subsetting, so it belongs in the cache identity. The installed
+  // package always writes it, so read it directly and fail fast if it's absent.
+  const engineVersion = fs
+    .readFileSync(path.join(path.dirname(splitterPackagePath), 'dist', 'version'), 'utf8')
+    .trim()
 
   const key = createHash('sha256')
-    .update(`cn-font-split@${splitterVersion}`)
+    .update(`cn-font-split@${splitterVersion} (${engineVersion})`)
     .update(JSON.stringify(splitOptions))
     .update(source)
     .digest('hex')

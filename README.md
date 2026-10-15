@@ -81,8 +81,12 @@ All of these are served with `Access-Control-Allow-Origin: *` (`public/_headers`
 in production, a scoped dev middleware locally). Fonts are split with
 `cn-font-split` from the unchanged `app/assets/fonts/LXGWWenKai-Regular.ttf`;
 generated files live in `node_modules/.cache/rozemyne-fonts/<key>` (keyed on the
-source contents, splitter version, and options) and are copied into the client
-build with `vite-plugin-static-copy`. Nothing generated is committed.
+source contents, splitter version, native engine version, and options) and are
+copied into the client build with `vite-plugin-static-copy`. Nothing generated
+is committed. The native engine is pinned to `7.6.8` via
+`patches/cn-font-split@7.4.3.patch`, because the package's install script
+resolves an empty release version from its `latest` endpoint; the patch also
+makes the Linux installer fail loudly instead of silently succeeding.
 
 `public/giscus.css` is the custom Giscus theme. It `@import`s `/fonts.css` and
 uses the same families (`LXGW WenKai` for body, `Maple Mono` for code) at the

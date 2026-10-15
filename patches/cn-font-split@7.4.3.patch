@@ -1,0 +1,23 @@
+diff --git a/dist/init.sh b/dist/init.sh
+index 56a25d930bf46372558c72d979eb0cf767900f92..ad5baddf01fe9f6de07d6318f048ca7324f900a0 100644
+--- a/dist/init.sh
++++ b/dist/init.sh
+@@ -1,4 +1,5 @@
+ #!/bin/bash
++set -e
+ # 需要依赖 curl, 只处理 Linux 和 Mac，不运行 Windows
+ 
+ rust_target=""
+diff --git a/package.json b/package.json
+index e08a6762c445ca1ec0c8dad4cd9670639e8cb895..f7d11ab100bac3d329383ace561849cc52c44bae 100644
+--- a/package.json
++++ b/package.json
+@@ -57,7 +57,7 @@
+     "protoc-gen-ts": "^0.8.7"
+   },
+   "scripts": {
+-    "postinstall": "node ./dist/cli.js i default || node -v",
++    "postinstall": "node ./dist/cli.js i default@7.6.8",
+     "update-proto": "sh ./scripts/build_proto_ts.sh && proto-to-cli -i ../../crates/proto/src/index.proto -m InputTemplate -o ./src/gen/proto.ts && sh scripts/build_proto_ts.sh",
+     "build": "pnpm update-proto && vite build && vite build -c vite.config.wasm.mts",
+     "prepublish": "pnpm build"
