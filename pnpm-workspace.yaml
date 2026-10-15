@@ -1,5 +1,6 @@
 overrides:
-  vite: npm:@voidzero-dev/vite-plus-core@latest
+  vite@*: npm:@voidzero-dev/vite-plus-core@1.2.0
+  vitest@*: 5.0.4
 
 ignoredBuiltDependencies:
   - koffi

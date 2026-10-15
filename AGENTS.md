@@ -28,7 +28,6 @@ Do not edit generated or transient directories such as `.react-router/`,
 
 ## Toolchain and setup
 
-- Use Node.js 24, as specified by `.node-version`.
 - Use the pnpm version declared in `package.json`.
 - Prefer Corepack so local commands match CI.
 
@@ -199,8 +198,10 @@ draft: false
   (`cloudflareContext` in `app/cloudflare-context.ts`, set in
   `workers/app.ts`).
 - Keep Cloudflare bindings typed through `CloudflareEnvironment`.
-- The Vite+ toolchain aliases `vite` to `@voidzero-dev/vite-plus-core` via
-  the `overrides` in `pnpm-workspace.yaml`; keep that alias when upgrading.
+- The Vite+ toolchain aliases `vite` and pins `vitest` to its bundled copies
+  via the `overrides` in `pnpm-workspace.yaml` (`vite@*` to
+  `@voidzero-dev/vite-plus-core`, `vitest@*` to the bundled Vitest); keep both
+  versions aligned with `vite-plus` when upgrading.
 - `vite.config.ts` embeds the current Git commit hash and build timestamp.
   Build commands therefore require the repository to have a resolvable
   `HEAD`.
