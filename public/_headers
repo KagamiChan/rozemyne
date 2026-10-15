@@ -1,0 +1,8 @@
+/giscus.css
+  Access-Control-Allow-Origin: *
+
+/fonts.css
+  Access-Control-Allow-Origin: *
+
+/fonts/*
+  Access-Control-Allow-Origin: *

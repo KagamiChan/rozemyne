@@ -1,0 +1,652 @@
+/*!
+ * Rozemyne Giscus theme.
+ *
+ * A restyle of giscus for the blog's calm reading surface: the same column and
+ * transparent background as the article, LXGW WenKai body text at the site's
+ * 20px base, flat borderless comments, and a compact header. Based on giscus's
+ * official `styles/themes/preferred_color_scheme.css` (MIT, GitHub Inc.;
+ * license note below) for the semantic states and `--color-prettylights-syntax-*`
+ * variables, which are kept. Per giscus/CONTRIBUTING.md the variables are
+ * inlined rather than `@import`ing a theme.
+ */
+@import './fonts.css';
+
+/*! Site typography: 20px base (matches app/app.css) and the site webfonts.
+ * giscus/styles/base.css consumes the font variables, so including the
+ * fixed-width editor toggle (`.gsc-is-fixed-width`). */
+:host,
+html {
+  font-size: 20px;
+  --font-family-sans:
+    'LXGW WenKai', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-family-monospace:
+    'Maple Mono', ui-monospace, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-family-default: var(--font-family-sans);
+}
+
+/* Form controls do not inherit fonts by default. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/*! MIT License
+ * Copyright (c) 2018 GitHub Inc.
+ * https://github.com/primer/primitives/blob/main/LICENSE
+ */
+
+main {
+  --color-prettylights-syntax-comment: #6e7781;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-entity: #8250df;
+  --color-prettylights-syntax-storage-modifier-import: #24292f;
+  --color-prettylights-syntax-entity-tag: #116329;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-string: #0a3069;
+  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+  --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+  --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+  --color-prettylights-syntax-carriage-return-text: #f6f8fa;
+  --color-prettylights-syntax-carriage-return-bg: #cf222e;
+  --color-prettylights-syntax-string-regexp: #116329;
+  --color-prettylights-syntax-markup-list: #3b2300;
+  --color-prettylights-syntax-markup-heading: #0550ae;
+  --color-prettylights-syntax-markup-italic: #24292f;
+  --color-prettylights-syntax-markup-bold: #24292f;
+  --color-prettylights-syntax-markup-deleted-text: #82071e;
+  --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+  --color-prettylights-syntax-markup-inserted-text: #116329;
+  --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+  --color-prettylights-syntax-markup-changed-text: #953800;
+  --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+  --color-prettylights-syntax-markup-ignored-text: #eaeef2;
+  --color-prettylights-syntax-markup-ignored-bg: #0550ae;
+  --color-prettylights-syntax-meta-diff-range: #8250df;
+  --color-prettylights-syntax-brackethighlighter-angle: #57606a;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+  --color-prettylights-syntax-constant-other-reference-link: #0a3069;
+
+  /* Controls: ink on transparent at rest, Rozemyne blue on hover. */
+  --color-btn-text: oklch(27.8% 0.033 256.848);
+  --color-btn-bg: transparent;
+  --color-btn-border: transparent;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #233b6c;
+  --color-btn-hover-border: #233b6c;
+  --color-btn-active-bg: #1d2b4e;
+  --color-btn-active-border: #1d2b4e;
+  --color-btn-selected-bg: #dfedfa;
+  --color-btn-primary-text: oklch(27.8% 0.033 256.848);
+  --color-btn-primary-bg: transparent;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #233b6c;
+  --color-btn-primary-hover-border: #233b6c;
+  --color-btn-primary-selected-bg: #1d2b4e;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: oklch(70.7% 0.022 261.325);
+  --color-btn-primary-disabled-bg: transparent;
+  --color-btn-primary-disabled-border: transparent;
+  --color-action-list-item-default-hover-bg: oklch(92.8% 0.006 264.531 / 60%);
+  --color-segmented-control-bg: transparent;
+  --color-segmented-control-button-bg: transparent;
+  --color-segmented-control-button-selected-border: #3061c5;
+
+  /* Neutral surfaces stay transparent or barely lifted; separators are subtle. */
+  --color-fg-default: oklch(21% 0.034 264.665);
+  --color-fg-muted: oklch(44.6% 0.03 256.802);
+  --color-fg-subtle: oklch(55.1% 0.027 264.364);
+  --color-canvas-default: transparent;
+  --color-canvas-overlay: oklch(98.5% 0.002 247.839);
+  --color-canvas-inset: transparent;
+  --color-canvas-subtle: oklch(92.8% 0.006 264.531);
+  --color-border-default: oklch(87.2% 0.01 258.338);
+  --color-border-muted: oklch(92.8% 0.006 264.531);
+  --color-neutral-muted: oklch(55.1% 0.027 264.364 / 12%);
+  --color-accent-fg: #3061c5;
+  --color-accent-emphasis: #233b6c;
+  --color-accent-muted: rgb(48 97 197 / 40%);
+  --color-accent-subtle: #dfedfa;
+  --color-success-fg: #1a7f37;
+  --color-attention-fg: #9a6700;
+  --color-attention-muted: rgb(212 167 44 / 40%);
+  --color-attention-subtle: #fff8c5;
+  --color-danger-fg: #d1242f;
+  --color-danger-muted: rgb(255 129 130 / 40%);
+  --color-danger-subtle: #ffebe9;
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-scale-gray-1: oklch(92.8% 0.006 264.531);
+  --color-scale-blue-1: #dfedfa;
+
+  /*! Extensions from @primer/css/alerts/flash.scss */
+  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+}
+
+main .pagination-loader-container {
+  background-image: url('https://github.com/images/modules/pulls/progressive-disclosure-line.svg');
+}
+
+main .gsc-loading-image {
+  background-image: url('https://github.githubassets.com/images/mona-loading-default.gif');
+}
+
+/*! Dark mode */
+@media (prefers-color-scheme: dark) {
+  /*! MIT License
+   * Copyright (c) 2018 GitHub Inc.
+   * https://github.com/primer/primitives/blob/main/LICENSE
+   */
+
+  main {
+    --color-prettylights-syntax-comment: #8b949e;
+    --color-prettylights-syntax-constant: #79c0ff;
+    --color-prettylights-syntax-entity: #d2a8ff;
+    --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+    --color-prettylights-syntax-entity-tag: #7ee787;
+    --color-prettylights-syntax-keyword: #ff7b72;
+    --color-prettylights-syntax-string: #a5d6ff;
+    --color-prettylights-syntax-variable: #ffa657;
+    --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+    --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+    --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+    --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+    --color-prettylights-syntax-carriage-return-bg: #b62324;
+    --color-prettylights-syntax-string-regexp: #7ee787;
+    --color-prettylights-syntax-markup-list: #f2cc60;
+    --color-prettylights-syntax-markup-heading: #1f6feb;
+    --color-prettylights-syntax-markup-italic: #c9d1d9;
+    --color-prettylights-syntax-markup-bold: #c9d1d9;
+    --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+    --color-prettylights-syntax-markup-deleted-bg: #67060c;
+    --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+    --color-prettylights-syntax-markup-inserted-bg: #033a16;
+    --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+    --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+    --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+    --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+    --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+    --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+    --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+    --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+
+    --color-btn-text: oklch(92.8% 0.006 264.531);
+    --color-btn-bg: transparent;
+    --color-btn-border: transparent;
+    --color-btn-shadow: 0 0 transparent;
+    --color-btn-inset-shadow: 0 0 transparent;
+    --color-btn-hover-bg: #9eccf2;
+    --color-btn-hover-border: #9eccf2;
+    --color-btn-active-bg: #70afea;
+    --color-btn-active-border: #70afea;
+    --color-btn-selected-bg: #233b6c;
+    --color-btn-primary-text: oklch(92.8% 0.006 264.531);
+    --color-btn-primary-bg: transparent;
+    --color-btn-primary-border: transparent;
+    --color-btn-primary-shadow: 0 0 transparent;
+    --color-btn-primary-inset-shadow: 0 0 transparent;
+    --color-btn-primary-hover-bg: #9eccf2;
+    --color-btn-primary-hover-border: #9eccf2;
+    --color-btn-primary-selected-bg: #70afea;
+    --color-btn-primary-selected-shadow: 0 0 transparent;
+    --color-btn-primary-disabled-text: oklch(55.1% 0.027 264.364);
+    --color-btn-primary-disabled-bg: transparent;
+    --color-btn-primary-disabled-border: transparent;
+    --color-action-list-item-default-hover-bg: oklch(37.3% 0.034 259.733 / 40%);
+    --color-segmented-control-bg: transparent;
+    --color-segmented-control-button-bg: transparent;
+    --color-segmented-control-button-selected-border: #9eccf2;
+
+    --color-fg-default: oklch(96.7% 0.003 264.542);
+    --color-fg-muted: oklch(70.7% 0.022 261.325);
+    --color-fg-subtle: oklch(55.1% 0.027 264.364);
+    --color-canvas-default: transparent;
+    --color-canvas-overlay: oklch(27.8% 0.033 256.848);
+    --color-canvas-inset: transparent;
+    --color-canvas-subtle: oklch(27.8% 0.033 256.848);
+    --color-border-default: oklch(37.3% 0.034 259.733);
+    --color-border-muted: oklch(27.8% 0.033 256.848);
+    --color-neutral-muted: oklch(55.1% 0.027 264.364 / 12%);
+    --color-accent-fg: #9eccf2;
+    --color-accent-emphasis: #9eccf2;
+    --color-accent-muted: rgb(158 204 242 / 40%);
+    --color-accent-subtle: rgb(158 204 242 / 12%);
+    --color-success-fg: #3fb950;
+    --color-attention-fg: #d29922;
+    --color-attention-muted: rgb(187 128 9 / 40%);
+    --color-attention-subtle: rgb(187 128 9 / 15%);
+    --color-danger-fg: #f85149;
+    --color-danger-muted: rgb(248 81 73 / 40%);
+    --color-danger-subtle: rgb(248 81 73 / 10%);
+    --color-primer-shadow-inset: 0 0 transparent;
+    --color-scale-gray-7: oklch(27.8% 0.033 256.848);
+    --color-scale-blue-8: #2d50a0;
+
+    /*! Extensions from @primer/css/alerts/flash.scss */
+    --color-social-reaction-bg-hover: var(--color-scale-gray-7);
+    --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+  }
+
+  main .pagination-loader-container {
+    background-image: url('https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg');
+  }
+
+  main .gsc-loading-image {
+    background-image: url('https://github.githubassets.com/images/mona-loading-dark.gif');
+  }
+}
+
+/*! Transparent so the page's gray-100 / gray-950 shows through the iframe. */
+html,
+body {
+  background: transparent;
+}
+
+/* =========================================================================
+   Rozemyne redesign
+   ========================================================================= */
+
+/* Production giscus utilities are scoped to `#__next` (for example
+ * `#__next .rounded-md { border-radius: .375rem }`), so every structural
+ * override below is scoped to `#__next` to outrank those utilities without
+ * `!important`. The variable and font definitions above stay unscoped. */
+
+/* Body copy at the site reading size; the header and controls are smaller. */
+#__next .gsc-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'header reactions'
+    'composer composer'
+    'timeline timeline';
+  column-gap: 1rem;
+  row-gap: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+#__next .gsc-comments {
+  display: contents;
+}
+
+/* Compact header: comment count left, reactions right, on one row. */
+#__next .gsc-header {
+  grid-area: header;
+  min-width: 0;
+}
+
+#__next .gsc-left-header {
+  min-width: 0;
+}
+
+#__next .gsc-comments-count {
+  font-size: 0.875rem;
+}
+
+#__next .gsc-reactions {
+  grid-area: reactions;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: none;
+  gap: 0.5rem;
+}
+
+#__next .gsc-reactions > div {
+  flex: none;
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+#__next .gsc-reactions-count {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-fg-subtle);
+}
+
+/* Keep the reactions popover inside the iframe (opens toward the right edge). */
+#__next .gsc-reactions-popover.bottom,
+#__next .gsc-reactions-popover.top {
+  right: 0;
+  left: auto;
+}
+
+#__next .gsc-reactions-popover.bottom {
+  top: calc(100% + 0.5rem);
+}
+
+#__next .gsc-reactions-popover.top {
+  bottom: calc(100% + 0.5rem);
+}
+
+#__next .gsc-reactions-popover {
+  border-radius: 0.25rem;
+}
+
+#__next .gsc-reactions-button {
+  background: transparent;
+  border-radius: 0;
+}
+
+/* Composer: flat and borderless, aligned to the article edge. */
+#__next .gsc-comment-box,
+#__next .gsc-comment-box:not(.gsc-comment-box-is-reply) {
+  grid-area: composer;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+#__next .gsc-comment-box-tabs,
+#__next .gsc-comment .gsc-comment-box-tabs {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+#__next .gsc-comment-box-tabs > div {
+  margin: 0;
+}
+
+#__next .gsc-comment-box-tabs > div:first-child {
+  display: flex;
+  gap: 1rem;
+}
+
+#__next .gsc-comment-box-tabs button {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.25rem 0;
+  color: var(--color-fg-muted);
+}
+
+#__next .gsc-comment-box-tabs button.color-text-primary {
+  color: var(--color-fg-default);
+  box-shadow: inset 0 -2px 0 0 var(--color-accent-fg);
+}
+
+#__next .gsc-comment-box-tabs button:focus-visible,
+#__next .gsc-toolbar-item:focus-visible {
+  outline: 2px solid var(--color-accent-fg);
+  outline-offset: 2px;
+}
+
+#__next .gsc-comment-box-md-toolbar {
+  margin: 0;
+}
+
+#__next .gsc-comment-box-main {
+  margin: 0.75rem 0 0;
+}
+
+#__next .gsc-comment-box-write,
+#__next .gsc-comment-box-write:focus-within {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+#__next .gsc-comment-box-textarea,
+#__next .gsc-comment-box-textarea.input-contrast {
+  background: transparent;
+  border: 1px solid oklch(55.1% 0.027 264.364);
+  border-radius: 2px;
+  box-shadow: none;
+  min-height: 7rem;
+  max-height: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+#__next .gsc-comment-box-textarea:focus,
+#__next .gsc-comment-box-textarea:focus-visible {
+  border-color: var(--color-accent-fg);
+  box-shadow: 0 0 0 2px var(--color-accent-muted);
+  outline: none;
+}
+
+#__next .gsc-comment-box-textarea-extras {
+  border: 0;
+  background: transparent;
+  padding: 0.5rem 0 0;
+}
+
+#__next .gsc-comment-box-markdown-hint {
+  color: var(--color-fg-subtle);
+}
+
+#__next .gsc-comment-box-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 0;
+}
+
+/* Restore upstream right alignment; the child utility margins (ml-1) are reset
+ * so the gap is consistent. */
+#__next .gsc-comment-box-buttons {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  max-width: 100%;
+  min-width: 0;
+  margin-block: 0;
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+}
+
+#__next .gsc-comment-box-buttons > * {
+  margin: 0;
+}
+
+/* Login / submit controls: compact outlined buttons with a clear affordance. */
+#__next .btn {
+  border: 1px solid oklch(55.1% 0.027 264.364);
+  border-radius: 2px;
+  background-color: transparent;
+  color: var(--color-fg-default);
+  padding: 0.35rem 0.7rem;
+  box-shadow: none;
+}
+
+#__next .btn-primary {
+  border: 1px solid #233b6c;
+  border-radius: 2px;
+  background-color: #f1f7fd;
+  color: #233b6c;
+  padding: 0.35rem 0.7rem;
+  box-shadow: none;
+}
+
+/* Rest-state rules above outrank the built-in hover, so set hover explicitly. */
+#__next .btn:hover:not(:disabled) {
+  background-color: var(--color-accent-subtle);
+  border-color: var(--color-accent-fg);
+  color: var(--color-accent-emphasis);
+}
+
+#__next .btn-primary:hover:not(:disabled) {
+  background-color: #233b6c;
+  border-color: #233b6c;
+  color: #fff;
+}
+
+#__next .btn:focus-visible {
+  outline: 2px solid var(--color-accent-fg);
+  outline-offset: 2px;
+}
+
+#__next .btn:disabled,
+#__next .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Comments and replies: no cards, modest separators, compact author row. */
+#__next .gsc-timeline {
+  grid-area: timeline;
+  gap: 0;
+}
+
+#__next .gsc-comment {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+#__next .gsc-comment > div {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--color-border-muted);
+  border-radius: 0;
+  padding-top: 1.25rem;
+}
+
+#__next .gsc-comment:first-child > div {
+  border-top: 0;
+  padding-top: 0;
+}
+
+#__next .gsc-comment-header,
+#__next .gsc-reply-header {
+  padding: 0;
+  gap: 0.5rem;
+}
+
+#__next .gsc-comment-author,
+#__next .gsc-reply-author {
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+#__next .gsc-comment-author time,
+#__next .gsc-reply-author time {
+  color: var(--color-fg-subtle);
+}
+
+#__next .gsc-comment-content {
+  padding: 0.75rem 0 0;
+  border-radius: 0;
+}
+
+#__next .gsc-comment-footer,
+#__next .gsc-reply-footer {
+  margin: 0.5rem 0 0;
+}
+
+#__next .gsc-comment-reactions,
+#__next .gsc-reply-reactions {
+  margin-left: 0;
+}
+
+/* Collapsed reply CTA: a neutral outline on the open comment surface. */
+#__next .gsc-reply-box {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--color-border-muted);
+  border-radius: 0;
+  padding: 0.75rem 0;
+}
+
+#__next .gsc-reply-box > button {
+  width: 100%;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid oklch(55.1% 0.027 264.364);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--color-fg-muted);
+  text-align: left;
+}
+
+#__next .gsc-reply-box > button:hover {
+  border-color: var(--color-accent-fg);
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-emphasis);
+}
+
+#__next .gsc-reply-box > button:focus-visible {
+  outline: 2px solid var(--color-accent-fg);
+  outline-offset: 2px;
+}
+
+#__next .gsc-replies {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--color-border-muted);
+  border-radius: 0;
+  padding-top: 0.75rem;
+}
+
+#__next .gsc-reply {
+  padding: 0.75rem 1rem 0.25rem;
+}
+
+#__next .gsc-reply-content {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* Comment body matches the prose body colour; headings and metadata stay
+ * distinct from it. */
+#__next .gsc-comment-content,
+#__next .gsc-reply-content {
+  color: oklch(37.3% 0.034 259.733);
+}
+
+#__next .gsc-comment-content :is(h1, h2, h3, h4, h5, h6),
+#__next .gsc-reply-content :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--color-fg-default);
+}
+
+#__next .gsc-tl-line {
+  background-color: var(--color-border-muted);
+}
+
+/* Links follow the Rozemyne accent. */
+#__next .markdown a,
+#__next .link-primary,
+#__next .color-text-link {
+  color: var(--color-accent-fg);
+}
+
+#__next a.link-primary:hover,
+#__next a.link-secondary:hover,
+#__next .markdown a:hover {
+  color: var(--color-accent-emphasis);
+}
+
+#__next .link-secondary {
+  color: var(--color-fg-muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  #__next .btn-primary {
+    background-color: #1d2b4e;
+    border-color: #9eccf2;
+    color: #9eccf2;
+  }
+
+  #__next .btn-primary:hover:not(:disabled) {
+    background-color: #9eccf2;
+    border-color: #9eccf2;
+    color: oklch(13% 0.028 261.692);
+  }
+
+  #__next .gsc-comment-content,
+  #__next .gsc-reply-content {
+    color: oklch(87.2% 0.01 258.338);
+  }
+}

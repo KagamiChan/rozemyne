@@ -1,17 +1,24 @@
 import { Block } from '~/components/block'
+import { Giscus } from '~/components/giscus'
 import type { MarkdownDocument } from '~/types'
 
 import type { Route } from './+types/post.$name'
 
-export function meta({ loaderData }: Route.MetaArgs) {
+export function meta({ loaderData, params }: Route.MetaArgs) {
+  const post = loaderData?.post
   return [
     {
-      title: loaderData?.post.attributes.title
-        ? `${loaderData.post.attributes.title} - 少年读书隙中窥月`
+      title: post?.attributes.title
+        ? `${post.attributes.title} - 少年读书隙中窥月`
         : '少年读书隙中窥月',
     },
     { name: 'description', content: '镜的个人日志' },
     { name: 'keywords', content: '镜, 少年读书隙中窥月, 日志, BLOG' },
+    // Pin Giscus's discussion backlink to production so local and www visits
+    // never become the link on the actual post.
+    ...(post && !post.attributes.draft
+      ? [{ name: 'giscus:backlink', content: `https://kagami.moe/post/${params.name}` }]
+      : []),
   ]
 }
 
@@ -45,6 +52,11 @@ export default function Post({ loaderData }: Route.ComponentProps) {
         className="prose w-full max-w-none px-2 text-pretty dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: loaderData.post.html }}
       />
+      {!loaderData.post.attributes.draft && (
+        <div className="mt-16 border-t border-gray-200 px-2 pt-8 dark:border-gray-800">
+          <Giscus />
+        </div>
+      )}
     </article>
   )
 }

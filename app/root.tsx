@@ -9,8 +9,6 @@ import type { Route } from './+types/root'
 import { Block } from './components/block'
 import { NavLink } from './components/nav-link'
 import { cn } from './utils'
-import './assets/fonts/LXGWWenKai-Regular.ttf?subsets'
-import '@fontsource/maple-mono'
 
 export function meta(_: Route.MetaArgs) {
   return [
@@ -24,6 +22,10 @@ export const links: Route.LinksFunction = () => [
   {
     rel: 'icon',
     href: '/favicon.svg',
+  },
+  {
+    rel: 'stylesheet',
+    href: '/fonts.css',
   },
 ]
 
