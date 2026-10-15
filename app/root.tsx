@@ -59,13 +59,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   <NavLink to="/about" className="p-1 [.active]:hidden">
                     关于我
                   </NavLink>
-                  <NavLink
-                    to="https://marshmallow-qa.com/op2q74schrlhn0w"
-                    target="_blank"
-                    className="p-1"
-                  >
-                    留言
-                  </NavLink>
                 </div>
               </Block>
               <div aria-hidden></div>
